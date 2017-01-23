@@ -4,8 +4,8 @@
     <bytecodeTargetLevel>
       <module name="publisher-user-service_main" target="1.5" />
       <module name="publisher-user-service_test" target="1.5" />
-      <module name="publisher-users-service_main" target="1.5" />
-      <module name="publisher-users-service_test" target="1.5" />
+      <module name="publisher-users-service_main" target="1.8" />
+      <module name="publisher-users-service_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
