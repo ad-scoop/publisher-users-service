@@ -65,7 +65,7 @@ public class UserNode extends Entity {
 
 
     @Relationship(direction = Relationship.OUTGOING, type = "CAMPAGIN_HAS_USER")
-    private Set<UserNode>  userNodes  = new HashSet<>();
+    private Set<Campagin>  campagins  = new HashSet<>();
 
 
     public String getFirstname() {
@@ -220,5 +220,10 @@ public class UserNode extends Entity {
         addressNodes.add(addressNode);
         addressNode.getUserNodes().add(this);
     }
-}
+
+    public void addCampagin(Campagin campagin){
+        campagins.add(campagin);
+        campagin.getUserNodes().add(this);
+
+    }}
 

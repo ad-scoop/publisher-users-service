@@ -68,4 +68,10 @@ public class Campagin extends  Entity {
     public void setNodes(Set<BannerNode> nodes) {
         this.nodes = nodes;
     }
+
+
+    public void addBanner(BannerNode bannerNode) {
+
+
+    }
 }

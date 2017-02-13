@@ -2,7 +2,6 @@ package com.userpublisher.services;
 
 
 import com.userpublisher.entites.Campagin;
-import com.userpublisher.entites.UserNode;
 
 import java.util.Optional;
 
@@ -10,14 +9,15 @@ import java.util.Optional;
  * Created by thokle on 23/01/2017.
  */
 public interface CampaginService {
-    Optional<UserNode> findUserByToken(String token);
 
-    void createCampagin(UserNode campagin);
 
-    void deleteCampagin(Campagin campagin);
 
+    Optional<Campagin> findCampaingByUser(String  token) throws Exception;
+
+    Optional<Iterable> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
     void updateCampagin(Campagin campagin);
 
+    void deleteCampagin(Campagin campagin);
 
 
 }
