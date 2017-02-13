@@ -1,7 +1,8 @@
 package com.userpublisher.services;
 
-import com.adscoop.entiites.Campagin;
-import com.adscoop.entiites.UserNode;
+
+import com.userpublisher.entites.Campagin;
+import com.userpublisher.entites.UserNode;
 
 import java.util.Optional;
 

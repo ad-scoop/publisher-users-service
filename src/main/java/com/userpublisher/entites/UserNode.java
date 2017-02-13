@@ -62,6 +62,12 @@ public class UserNode extends Entity {
     @Relationship(direction = Relationship.OUTGOING, type =  "HAS_BANNER_NODES")
     private Set<BannerNode> bannerNodes = new HashSet<>();
 
+
+
+    @Relationship(direction = Relationship.OUTGOING, type = "CAMPAGIN_HAS_USER")
+    private Set<UserNode>  userNodes  = new HashSet<>();
+
+
     public String getFirstname() {
         return firstname;
     }
@@ -200,6 +206,8 @@ public class UserNode extends Entity {
     public void setAccountInformations(Set<AccountInformation> accountInformations) {
         this.accountInformations = accountInformations;
     }
+
+
 
 
     public void addBanner(BannerNode bannerNode){

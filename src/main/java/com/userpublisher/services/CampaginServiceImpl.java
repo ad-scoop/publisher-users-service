@@ -1,8 +1,9 @@
 package com.userpublisher.services;
 
-import com.adscoop.entiites.Campagin;
-import com.adscoop.entiites.UserNode;
+
 import com.google.inject.Inject;
+import com.userpublisher.entites.Campagin;
+import com.userpublisher.entites.UserNode;
 import org.neo4j.ogm.session.Session;
 
 import java.util.Collections;

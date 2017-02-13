@@ -1,6 +1,8 @@
 package com.userpublisher.services;
 
-import com.adscoop.entiites.BannerNode;
+
+
+import com.userpublisher.entites.BannerNode;
 
 import java.util.List;
 import java.util.Optional;

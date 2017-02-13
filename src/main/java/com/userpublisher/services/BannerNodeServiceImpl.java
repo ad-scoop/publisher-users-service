@@ -1,7 +1,7 @@
 package com.userpublisher.services;
 
-import com.adscoop.entiites.BannerNode;
 import com.google.inject.Inject;
+import com.userpublisher.entites.BannerNode;
 import org.neo4j.ogm.session.Session;
 
 import java.util.List;
