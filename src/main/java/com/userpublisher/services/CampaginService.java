@@ -12,9 +12,9 @@ public interface CampaginService {
 
 
 
-    Optional<Campagin> findCampaingByUser(String  token) throws Exception;
+    Optional<Iterable<Campagin>> findCampaingsByUser(String  token) throws Exception;
 
-    Optional<Iterable> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
+    Optional<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
     void updateCampagin(Campagin campagin);
 
     void deleteCampagin(Campagin campagin);

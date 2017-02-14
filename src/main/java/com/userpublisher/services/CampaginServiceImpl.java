@@ -23,18 +23,18 @@ public class CampaginServiceImpl implements CampaginService {
     }
 
     @Override
-    public Optional<Campagin> findCampaingByUser(String token) throws Exception {
+    public Optional<Iterable<Campagin>> findCampaingsByUser(String token) throws Exception {
         try {
-            return Optional.ofNullable(session.queryForObject(Campagin.class,"", Collections.EMPTY_MAP));
+            return Optional.ofNullable(session.query(Campagin.class,"", Collections.EMPTY_MAP));
         }catch (Exception e){
              throw new Exception(e);
         }
     }
 
 
-    public Optional<Iterable> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception {
+    public Optional<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception {
         try{
-            return Optional.ofNullable(session.query(Campagin.class, "",Collections.EMPTY_MAP));
+            return Optional.ofNullable(session.queryForObject(Campagin.class, "",Collections.EMPTY_MAP));
         }catch (Exception e){
             throw new Exception(e);
         }
@@ -42,11 +42,13 @@ public class CampaginServiceImpl implements CampaginService {
 
     @Override
     public void deleteCampagin(Campagin campagin) {
-
+        if(session.detachNodeEntity(campagin.getId())){
+            session.delete(campagin);
+        }
     }
 
     @Override
     public void updateCampagin(Campagin campagin) {
-         session.delete(campagin);
+         session.save(campagin);
     }
 }
