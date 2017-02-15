@@ -1,12 +1,11 @@
 package com.userpublisher.configurations;
 
-import com.google.inject.CreationException;
+import com.google.inject.AbstractModule;
 import com.userpublisher.chains.BannerNodeChain;
 import com.userpublisher.chains.CampaginChain;
 import com.userpublisher.handlers.banners.AddBannerToCampaginHandler;
 import com.userpublisher.handlers.campagin.CreateCampaginHandler;
 import com.userpublisher.services.*;
-import com.google.inject.AbstractModule;
 
 /**
  * Created by thokle on 25/01/2017.

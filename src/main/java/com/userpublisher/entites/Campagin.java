@@ -1,11 +1,11 @@
 package com.userpublisher.entites;
 
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 /**
  * Created by thokle on 12/02/2017.

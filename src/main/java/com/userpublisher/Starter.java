@@ -2,11 +2,10 @@ package com.userpublisher;
 
 import com.userpublisher.chains.BannerNodeChain;
 import com.userpublisher.chains.CampaginChain;
-
 import com.userpublisher.configurations.ConfigModule;
-
 import com.userpublisher.modules.Config;
 import com.userpublisher.modules.ServiceCommonConfigModule;
+
 import ratpack.guice.Guice;
 import ratpack.rx.RxRatpack;
 import ratpack.server.BaseDir;

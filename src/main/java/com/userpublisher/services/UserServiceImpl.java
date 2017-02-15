@@ -1,11 +1,11 @@
 package com.userpublisher.services;
 
-import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
-import com.userpublisher.entites.UserNode;
-import org.neo4j.ogm.session.Session;
-
 import java.util.Collections;
 import java.util.Optional;
+
+import org.neo4j.ogm.session.Session;
+
+import com.userpublisher.entites.UserNode;
 
 /**
  * Created by kleistit on 13/02/2017.

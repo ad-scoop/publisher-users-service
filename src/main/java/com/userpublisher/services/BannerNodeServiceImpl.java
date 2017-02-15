@@ -1,11 +1,12 @@
 package com.userpublisher.services;
 
-import com.google.inject.Inject;
-import com.userpublisher.entites.BannerNode;
-import org.neo4j.ogm.session.Session;
-
 import java.util.List;
 import java.util.Optional;
+
+import org.neo4j.ogm.session.Session;
+
+import com.google.inject.Inject;
+import com.userpublisher.entites.BannerNode;
 
 /**
  * Created by thokle on 27/01/2017.

@@ -1,5 +1,7 @@
 package com.userpublisher.handlers.campagin;
 
+import static ratpack.jackson.Jackson.fromJson;
+
 import java.util.Optional;
 
 import com.google.inject.Inject;
@@ -9,8 +11,6 @@ import com.userpublisher.services.UserSevice;
 
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
-
-import static ratpack.jackson.Jackson.fromJson;
 
 /**
  * Created by thokle on 27/01/2017.
