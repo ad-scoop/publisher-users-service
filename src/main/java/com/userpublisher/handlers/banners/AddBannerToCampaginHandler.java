@@ -2,11 +2,10 @@ package com.userpublisher.handlers.banners;
 
 import java.util.Optional;
 
-import com.userpublisher.entites.BannerNode;
-import com.userpublisher.entites.Campagin;
-import com.userpublisher.services.CampaginService;
-import com.userpublisher.services.UploadBannerService;
 
+import com.adscoop.userpublisher.entites.BannerNode;
+import com.adscoop.userpublisher.entites.Campagin;
+import com.adscoop.userpublisher.services.CampaginService;
 import ratpack.form.Form;
 import ratpack.form.UploadedFile;
 import ratpack.handling.Context;
@@ -17,12 +16,12 @@ import ratpack.handling.Handler;
  */
 public class AddBannerToCampaginHandler implements Handler {
     CampaginService campaginService;
-    UploadBannerService uploadBannerService;
 
 
-    public AddBannerToCampaginHandler(CampaginService campaginService, UploadBannerService uploadBannerService) {
+
+    public AddBannerToCampaginHandler(CampaginService campaginService) {
         this.campaginService = campaginService;
-        this.uploadBannerService = uploadBannerService;
+
     }
 
     @Override
