@@ -1,11 +1,14 @@
+
 package com.userpublisher.configurations;
 
+import com.adscoop.userpublisher.chains.BannerNodeChain;
+import com.adscoop.userpublisher.chains.CampaginChain;
+import com.adscoop.userpublisher.handlers.campagin.CreateCampaginHandler;
+import com.adscoop.userpublisher.services.*;
 import com.google.inject.AbstractModule;
-import com.userpublisher.chains.BannerNodeChain;
-import com.userpublisher.chains.CampaginChain;
+
 import com.userpublisher.handlers.banners.AddBannerToCampaginHandler;
-import com.userpublisher.handlers.campagin.CreateCampaginHandler;
-import com.userpublisher.services.*;
+
 
 /**
  * Created by thokle on 25/01/2017.
