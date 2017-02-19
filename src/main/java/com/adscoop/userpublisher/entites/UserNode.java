@@ -210,10 +210,7 @@ public class UserNode extends Entity {
 
 
 
-    public void addBanner(BannerNode bannerNode){
-        bannerNodes.add(bannerNode);
-        bannerNode.getUserNodes().add(this);
-    }
+
 
     public void addAddress(AddressNode addressNode){
 

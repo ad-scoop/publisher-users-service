@@ -28,8 +28,9 @@ public class AddBannerToCampaginHandler implements Handler {
     public void handle(Context ctx) throws Exception {
 
         ctx.parse(fromJson(BannerNode.class)).then(bannerNode -> {
-
-        Optional<Campagin> campagin =  campaginService.findCampaginsByUserTokenAndName("","");
+    String token = ctx.getRequest().getHeaders().get("token");
+    String campaginname = ctx.getPathTokens().get("campaginname");
+        Optional<Campagin> campagin =  campaginService.findCampaginsByUserTokenAndName(campaginname,token);
 
         if(campagin.isPresent()){
             BannerNode banner = new BannerNode();

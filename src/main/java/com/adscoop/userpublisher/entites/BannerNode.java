@@ -62,8 +62,8 @@ private List<String> labels = new ArrayList<>();
     private Set<FootPrintInformationNode> footPrintInformationNodes = new HashSet<>();
 
 
-    @Relationship(type = "HAS_BANNER_NODES", direction = Relationship.INCOMING)
-    private Set<UserNode> userNodes  = new HashSet<>();
+    @Relationship(direction = Relationship.OUTGOING, type="CAMPAGIN_HAS_BANNERS")
+    private  Set<Campagin>  nodes = new HashSet<>();
 
     public String getDomain() {
         return domain;
@@ -213,12 +213,18 @@ private List<String> labels = new ArrayList<>();
         this.javaScriptUrl = javaScriptUrl;
     }
 
-    @JsonIgnore
-    public Set<UserNode> getUserNodes() {
-        return userNodes;
+    public void setFootPrintInformationNodes(Set<FootPrintInformationNode> footPrintInformationNodes) {
+        this.footPrintInformationNodes = footPrintInformationNodes;
     }
 
-    public void setUserNodes(Set<UserNode> userNodes) {
-        this.userNodes = userNodes;
+    public Set<Campagin> getNodes() {
+        return nodes;
     }
+
+    public void setNodes(Set<Campagin> nodes) {
+        this.nodes = nodes;
+    }
+
+
+
 }

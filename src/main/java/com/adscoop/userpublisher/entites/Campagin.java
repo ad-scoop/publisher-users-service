@@ -19,6 +19,7 @@ public class Campagin extends  Entity {
     private String startDate;
     private String endDate;
 
+    private double maxPricePrDay;
 
 
     @Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_USER")
@@ -71,7 +72,8 @@ public class Campagin extends  Entity {
 
 
     public void addBanner(BannerNode bannerNode) {
-
+            nodes.add(bannerNode);
+            bannerNode.getNodes().add(this);
 
     }
 }

@@ -36,7 +36,7 @@ public class CampaginServiceImpl implements CampaginService {
 
     public Optional<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception {
         try{
-            return Optional.ofNullable(session.queryForObject(Campagin.class, "",Collections.EMPTY_MAP));
+            return Optional.ofNullable(session.queryForObject(Campagin.class, "match (u)-[:CAMPAGIN_HAS_USER]->(c) where u.token = '"+token +"' and c.campagin_name='"+campaginname+"' return c",Collections.EMPTY_MAP));
         }catch (Exception e){
             throw new Exception(e);
         }
