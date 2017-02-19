@@ -9,7 +9,7 @@ import java.util.Optional;
  */
 public interface UserSevice {
 
-    Optional<UserNode> findUserByToken(String token);
+    Optional<UserNode> findUserByToken(String token) throws Exception;
 
     void saveOrUpate(UserNode userNode);
 }

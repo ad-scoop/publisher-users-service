@@ -22,9 +22,12 @@ public class UserServiceImpl implements UserSevice
     }
 
     @Override
-    public Optional<UserNode> findUserByToken(String token) {
-
-        return Optional.ofNullable(session.queryForObject(UserNode.class, "match (u) where u.token='"+token+"' return u", Collections.EMPTY_MAP));
+    public Optional<UserNode> findUserByToken(String token) throws Exception {
+        try {
+            return Optional.ofNullable(session.queryForObject(UserNode.class, "match (u) where u.token='" + token + "' return u", Collections.EMPTY_MAP));
+        } catch (Exception e) {
+            throw new Exception(e.getCause());
+        }
     }
 
 

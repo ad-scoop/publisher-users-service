@@ -11,7 +11,8 @@ apply plugin: 'maven'
 apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
 
-
+apply plugin: 'com.bmuschko.docker-remote-api'
+apply plugin: 'com.bmuschko.docker-java-application'
 
 
 
@@ -26,7 +27,7 @@ buildscript {
     dependencies{
 
         classpath "io.ratpack:ratpack-gradle:1.4.3"
-
+      classpath 'com.bmuschko:gradle-docker-plugin:3.0.1'
 
     }
 
@@ -34,7 +35,12 @@ buildscript {
 }
 
 
-
+docker {
+    javaApplication {
+        maintainer = 'Thomas Kleist "thomas@kleist-it.com"'
+        port = 8182
+    }
+}
 
 
 repositories {
@@ -67,9 +73,7 @@ dependencies {
     runtime 'org.apache.logging.log4j:log4j-core:2.0.2'
 }
 
-distZip {
-    archiveName = baseName + ".zip"
-}
+
 
 
 mainClassName = "com.adscoop.userpublisher.Starter"

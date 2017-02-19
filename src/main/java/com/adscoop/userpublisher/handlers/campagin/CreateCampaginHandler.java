@@ -12,6 +12,7 @@ import ratpack.handling.Handler;
 import ratpack.jackson.Jackson;
 
 import static ratpack.jackson.Jackson.fromJson;
+import static ratpack.jackson.Jackson.json;
 
 /**
  * Created by thokle on 27/01/2017.
@@ -28,8 +29,9 @@ public class CreateCampaginHandler implements Handler {
 
     @Override
     public void handle(Context ctx) throws Exception {
-    if(!getToken(ctx).contains("no token")){
-      Optional<UserNode> optional =   userSevice.findUserByToken(getToken(ctx));
+        String token  =ctx.getRequest().getHeaders().get("token");
+    if(!token.isEmpty()){
+      Optional<UserNode> optional =   userSevice.findUserByToken(token);
             if(optional.isPresent()){
                 ctx.parse(Jackson.fromJson(Campagin.class)).then(campagin -> {
                     Campagin campagin1 = new Campagin();
@@ -45,9 +47,9 @@ public class CreateCampaginHandler implements Handler {
                 });
 
             } else {
-                ctx.render("no user present");
+                ctx.render(json("no user present"));
             }
-    }else {ctx.render("no token present");
+    }else {ctx.render(json("no token present"));
     }
 
 
@@ -59,6 +61,8 @@ public class CreateCampaginHandler implements Handler {
       Optional<String>  token =  Optional.of(context.getRequest().getHeaders().get("token"));
        if(token.isPresent()){
            return  token.get();
-       }else return "no token";
+       }else {
+           return "no token";
+    }
     }
 }
