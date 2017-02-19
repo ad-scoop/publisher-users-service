@@ -52,9 +52,10 @@ public class CreateCampaginHandler implements Handler {
             } else {
                 ctx.render(json("no user present"));
             }
-    }else {ctx.render(json("no token present"));
+    }else {
+        ctx.render(json("no token present"));
     }
-
+        ctx.render(json("campagin was creqted"));
 
     }
 

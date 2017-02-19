@@ -4,7 +4,7 @@ import com.adscoop.userpublisher.chains.BannerNodeChain;
 import com.adscoop.userpublisher.chains.CampaginChain;
 import com.adscoop.userpublisher.modules.Config;
 import com.adscoop.userpublisher.modules.ServiceCommonConfigModule;
-import com.userpublisher.configurations.ConfigModule;
+import com.adscoop.userpublisher.configurations.ConfigModule;
 
 import ratpack.guice.Guice;
 import ratpack.rx.RxRatpack;
