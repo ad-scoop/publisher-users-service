@@ -1,6 +1,6 @@
 package com.adscoop.userpublisher.handlers.campagin;
 
-import static ratpack.jackson.Jackson.fromJson;
+
 
 import java.util.Optional;
 
@@ -13,12 +13,10 @@ import ratpack.handling.Context;
 import ratpack.handling.Handler;
 import ratpack.jackson.Jackson;
 
-<<<<<<< HEAD
+
 import static ratpack.jackson.Jackson.fromJson;
 import static ratpack.jackson.Jackson.json;
 
-=======
->>>>>>> 3d58c5c80788df495be37f9374576d60867db48c
 /**
  * Created by thokle on 27/01/2017.
  */
@@ -38,7 +36,7 @@ public class CreateCampaginHandler implements Handler {
     if(!token.isEmpty()){
       Optional<UserNode> optional =   userSevice.findUserByToken(token);
             if(optional.isPresent()){
-                ctx.parse(Jackson.fromJson(Campagin.class)).then(campagin -> {
+                ctx.parse(fromJson(Campagin.class)).then(campagin -> {
                     Campagin campagin1 = new Campagin();
                     campagin1.setCampagin_name(campagin.getCampagin_name());
                     campagin1.setStartDate(campagin.getStartDate());
