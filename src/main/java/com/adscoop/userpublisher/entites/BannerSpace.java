@@ -40,6 +40,9 @@ public class BannerSpace  extends Entity {
 
     private List<Regions> regions;
 
+    private List<String> reservedids;
+
+
     @Labels
     private List<String> labels = new ArrayList<>();
 
@@ -53,6 +56,8 @@ public class BannerSpace  extends Entity {
 
     @Relationship(type = "HAS_CATEGORIES" , direction = Relationship.OUTGOING)
     private  Set<Category> categories = new HashSet<>();
+
+
 
     public String getDomain() {
         return domain;
@@ -164,6 +169,22 @@ public class BannerSpace  extends Entity {
         return categories;
     }
 
+
+    public List<String> getReservedids() {
+        return reservedids;
+    }
+
+    public void setReservedids(List<String> reservedids) {
+        this.reservedids = reservedids;
+    }
+
+    public void setBannerNodesbannerSpaces(Set<BannerNode> bannerNodesbannerSpaces) {
+        this.bannerNodesbannerSpaces = bannerNodesbannerSpaces;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
 
     public  void addCategory(Category category){
         categories.add(category);
