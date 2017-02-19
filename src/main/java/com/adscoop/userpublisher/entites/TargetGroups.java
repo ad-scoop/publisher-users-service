@@ -1,9 +1,9 @@
 package com.adscoop.userpublisher.entites;
 
+import java.util.*;
+
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotations.Labels;
-
-import java.util.*;
 
 /**
  * Created by thokle on 25/08/2016.

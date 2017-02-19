@@ -1,5 +1,7 @@
 package com.adscoop.userpublisher.handlers.campagin;
 
+import static ratpack.jackson.Jackson.fromJson;
+
 import java.util.Optional;
 
 import com.adscoop.userpublisher.entites.Campagin;
@@ -11,9 +13,12 @@ import ratpack.handling.Context;
 import ratpack.handling.Handler;
 import ratpack.jackson.Jackson;
 
+<<<<<<< HEAD
 import static ratpack.jackson.Jackson.fromJson;
 import static ratpack.jackson.Jackson.json;
 
+=======
+>>>>>>> 3d58c5c80788df495be37f9374576d60867db48c
 /**
  * Created by thokle on 27/01/2017.
  */

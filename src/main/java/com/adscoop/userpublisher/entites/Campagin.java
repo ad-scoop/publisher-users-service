@@ -1,11 +1,11 @@
 package com.adscoop.userpublisher.entites;
 
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
-
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
+import org.neo4j.ogm.annotation.NodeEntity;
+import org.neo4j.ogm.annotation.Relationship;
 
 /**
  * Created by thokle on 12/02/2017.
@@ -16,8 +16,8 @@ public class Campagin extends  Entity {
 
     private String campagin_name;
 
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
 
 
 
@@ -37,19 +37,19 @@ public class Campagin extends  Entity {
         this.campagin_name = campagin_name;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 

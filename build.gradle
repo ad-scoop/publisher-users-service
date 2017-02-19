@@ -19,12 +19,12 @@ apply plugin: 'com.bmuschko.docker-java-application'
 buildscript {
 
 
-    repositories{
+    repositories {
         jcenter()
         mavenCentral()
         mavenLocal()
     }
-    dependencies{
+    dependencies {
 
         classpath "io.ratpack:ratpack-gradle:1.4.3"
       classpath 'com.bmuschko:gradle-docker-plugin:3.0.1'
@@ -53,8 +53,8 @@ repositories {
 }
 
 dependencies {
-    compile  group:  'io.ratpack', name: 'ratpack-guice', version: '1.4.3'
-    compile  group:  'io.ratpack', name: 'ratpack-rx', version: '1.4.3'
+    compile group: 'io.ratpack', name: 'ratpack-guice', version: '1.4.3'
+    compile group: 'io.ratpack', name: 'ratpack-rx', version: '1.4.3'
 
 
     compile group: 'com.google.code.gson', name: 'gson', version: '2.6.2'
