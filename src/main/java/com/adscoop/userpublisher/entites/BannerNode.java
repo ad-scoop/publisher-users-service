@@ -27,7 +27,7 @@ public class BannerNode extends Entity {
     private String domain;
     private String positionSiteM;
     private String positionSiteL;
-    private URL Url;
+    private String url;
     private String uniqeToken;
     private Integer lenght;
     private Integer height;
@@ -56,7 +56,8 @@ private List<String> labels = new ArrayList<>();
     private Set<FootPrintInformationNode> footPrintInformationNodes = new HashSet<>();
 
 
-    @Relationship(direction = Relationship.OUTGOING, type="CAMPAGIN_HAS_BANNERS")
+    @JsonIgnore
+    @Relationship(direction = Relationship.INCOMING, type="CAMPAGIN_HAS_BANNERS")
     private  Set<Campagin>  nodes = new HashSet<>();
 
     public String getDomain() {
@@ -83,12 +84,12 @@ private List<String> labels = new ArrayList<>();
         this.positionSiteL = positionSiteL;
     }
 
-    public URL getUrl() {
-        return Url;
+    public String getUrl() {
+        return url;
     }
 
-    public void setUrl(URL url) {
-        Url = url;
+    public void setUrl(String url) {
+        url = url;
     }
 
     public String getUniqeToken() {
