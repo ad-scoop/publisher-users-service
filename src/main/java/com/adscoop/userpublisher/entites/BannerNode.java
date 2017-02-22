@@ -6,9 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import org.neo4j.ogm.annotations.Labels;
+
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -21,28 +22,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BannerNode extends Entity {
 
 
-    @JsonProperty
-    private String userId;
-    @JsonProperty
+
+
     private String domain;
-    @JsonProperty
     private String positionSiteM;
-    @JsonProperty
     private String positionSiteL;
-    @JsonProperty
     private URL Url;
     private String uniqeToken;
-    @JsonProperty
     private Integer lenght;
-    @JsonProperty
     private Integer height;
-    @JsonProperty
     private  String counterUrl;
-    @JsonProperty
     private Integer counter;
     private String bannerSpaceToken;
     private  String pictureUrl;
-    private  String javaScriptUrl;
+
+    private String filetype;
 
 @Labels
 private List<String> labels = new ArrayList<>();
@@ -205,17 +199,6 @@ private List<String> labels = new ArrayList<>();
 
 
 
-    public String getJavaScriptUrl() {
-        return javaScriptUrl;
-    }
-
-    public void setJavaScriptUrl(String javaScriptUrl) {
-        this.javaScriptUrl = javaScriptUrl;
-    }
-
-    public void setFootPrintInformationNodes(Set<FootPrintInformationNode> footPrintInformationNodes) {
-        this.footPrintInformationNodes = footPrintInformationNodes;
-    }
 
     public Set<Campagin> getNodes() {
         return nodes;
@@ -225,6 +208,11 @@ private List<String> labels = new ArrayList<>();
         this.nodes = nodes;
     }
 
+    public String getFiletype() {
+        return filetype;
+    }
 
-
+    public void setFiletype(String filetype) {
+        this.filetype = filetype;
+    }
 }

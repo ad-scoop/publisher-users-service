@@ -10,6 +10,7 @@ import ratpack.handling.Handler;
 import java.util.Optional;
 
 import static ratpack.jackson.Jackson.fromJson;
+import static ratpack.jackson.Jackson.json;
 
 /**
  * Created by kleistit on 13/02/2017.
@@ -34,18 +35,12 @@ public class AddBannerToCampaginHandler implements Handler {
 
         if(campagin.isPresent()){
             BannerNode banner = new BannerNode();
-            bannerNode.getCategories().stream().filter(f -> f !=null).forEach( s ->{
-                banner.getCategories().add(s);
 
-            });
 
             banner.setDomain(bannerNode.getDomain());
             banner.setHeight(bannerNode.getHeight());
 
-            banner.getLabels().stream().filter(f -> f !=null).forEach( s ->  {
-                banner.getLabels().add(s);
 
-            });
 
 
             banner.setLenght(bannerNode.getLenght());
@@ -53,19 +48,18 @@ public class AddBannerToCampaginHandler implements Handler {
             banner.setPositionSiteL(bannerNode.getPositionSiteL());
             banner.setPositionSiteM(bannerNode.getPositionSiteM());
 
-            bannerNode.getTargetGroupses().stream().filter(f -> f !=null ).forEach(tg -> {
-                banner.getTargetGroupses().add(tg);
-            });
 
 
             banner.setUrl(bannerNode.getUrl());
-
+banner.setFiletype(bannerNode.getFiletype());
 
 
             campagin.get().addBanner(banner);
 
-
-            campaginService.updateCampagin(campagin.get());
+Campagin campagin1 = campagin.get();
+campagin1.addBanner(banner);
+            campaginService.updateCampagin(campagin1);
+            ctx.render(json(campagin.get()));
         }
 
 
