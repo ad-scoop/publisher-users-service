@@ -42,7 +42,6 @@ docker {
     }
 }
 
-
 repositories {
     jcenter()
     mavenCentral()
