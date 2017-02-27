@@ -13,6 +13,8 @@ public class CampaginChain implements Action<Chain> {
 
     @Override
     public void execute(Chain chain) throws Exception {
-        chain.post(CreateCampaginHandler.class).get("reservedbannserspaces", GetReservedBannserSpacesHandler.class);
+        chain
+        	.post(CreateCampaginHandler.class)
+        	.get("reservedbannserspaces", GetReservedBannserSpacesHandler.class);
     }
 }

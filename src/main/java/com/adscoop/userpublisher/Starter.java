@@ -20,10 +20,19 @@ public class Starter {
     public static void main(String ... args) throws Exception {
         RxRatpack.initialize();
 
-        RatpackServer.start(ratpackServerSpec -> ratpackServerSpec.serverConfig(sfb -> sfb.baseDir(BaseDir.find()).props("ratpack.properties").yaml("database.yaml").require("/db", Config.class).env().sysProps().build())
-                .registry(Guice.registry(bindingsSpec -> bindingsSpec.module(ConfigModule.class).module(ServiceCommonConfigModule.class))).
-                        handlers(chain -> chain.prefix("banners", BannerNodeChain.class).prefix("campagin", CampaginChain.class)));
-
-
+        RatpackServer.start(ratpackServerSpec -> ratpackServerSpec
+        		.serverConfig(sfb -> sfb.baseDir(BaseDir.find())
+        				.props("ratpack.properties")
+        				.yaml("database.yaml")
+        				.require("/db", Config.class)
+        				.env()
+        				.sysProps()
+        				.build())
+                .registry(Guice.registry(bindingsSpec -> bindingsSpec
+                		.module(ConfigModule.class)
+                		.module(ServiceCommonConfigModule.class))).
+                        handlers(chain -> chain.prefix("banners", BannerNodeChain.class)
+                        		.prefix("campagin", CampaginChain.class)));
     }
+    
 }

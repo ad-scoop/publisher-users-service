@@ -21,9 +21,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @NodeEntity
 public class BannerNode extends Entity {
 
-
-
-
     private String domain;
     private String positionSiteM;
     private String positionSiteL;
