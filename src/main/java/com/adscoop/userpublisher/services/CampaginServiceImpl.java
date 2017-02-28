@@ -3,6 +3,7 @@ package com.adscoop.userpublisher.services;
 import com.google.inject.Inject;
 import com.adscoop.userpublisher.entites.Campagin;
 import org.neo4j.ogm.session.Session;
+import ratpack.exec.Promise;
 
 
 import java.util.Collections;
@@ -25,9 +26,9 @@ public class CampaginServiceImpl implements CampaginService {
     }
 
     @Override
-    public Optional<Iterable<Campagin>> findCampaingsByUser(String token) throws Exception {
+    public Promise<Iterable<Campagin>> findCampaingsByUser(String token) throws Exception {
         try {
-            return Optional.ofNullable(session.query(Campagin.class,"", Collections.EMPTY_MAP));
+            return Promise.value(session.query(Campagin.class,"match (u:UserNode)-[:CAMPAGIN_HAS_USER]->(c:Campagin) where u.token='"+token+"' return c", Collections.EMPTY_MAP));
         }catch (Exception e){
              throw new Exception(e);
         }

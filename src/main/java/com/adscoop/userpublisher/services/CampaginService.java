@@ -3,6 +3,7 @@ package com.adscoop.userpublisher.services;
 
 
 import com.adscoop.userpublisher.entites.Campagin;
+import ratpack.exec.Promise;
 
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ public interface CampaginService {
 
 
 
-    Optional<Iterable<Campagin>> findCampaingsByUser(String  token) throws Exception;
+   Promise<Iterable<Campagin>> findCampaingsByUser(String  token) throws Exception;
 
     Optional<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
     void updateCampagin(Campagin campagin);
