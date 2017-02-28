@@ -2,6 +2,8 @@ package com.adscoop.userpublisher.chains;
 
 import com.adscoop.userpublisher.handlers.bannerspace.GetReservedBannserSpacesHandler;
 import com.adscoop.userpublisher.handlers.campagin.CreateCampaginHandler;
+import com.adscoop.userpublisher.handlers.campagin.GetCampaginHandler;
+
 import ratpack.func.Action;
 import ratpack.handling.Chain;
 
@@ -13,6 +15,9 @@ public class CampaginChain implements Action<Chain> {
 
     @Override
     public void execute(Chain chain) throws Exception {
-        chain.post(CreateCampaginHandler.class).get("reservedbannserspaces", GetReservedBannserSpacesHandler.class).get("listUserCampagins", GetCampaginHandler.class);
+        chain
+        	.post(CreateCampaginHandler.class)
+        	.get("reservedbannserspaces", GetReservedBannserSpacesHandler.class)
+        	.get("listUserCampagins", GetCampaginHandler.class);
     }
 }

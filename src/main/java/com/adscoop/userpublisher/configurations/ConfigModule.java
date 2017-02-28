@@ -4,11 +4,19 @@ package com.adscoop.userpublisher.configurations;
 import com.adscoop.userpublisher.chains.BannerNodeChain;
 import com.adscoop.userpublisher.chains.CampaginChain;
 import com.adscoop.userpublisher.exceptions.PublisherUserException;
+import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.handlers.banners.AddBannerToCampaginHandler;
 import com.adscoop.userpublisher.handlers.bannerspace.GetReservedBannserSpacesHandler;
 import com.adscoop.userpublisher.handlers.campagin.CreateCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.GetCampaginHandler;
-import com.adscoop.userpublisher.services.*;
+import com.adscoop.userpublisher.services.BannerNodeService;
+import com.adscoop.userpublisher.services.BannerNodeServiceImpl;
+import com.adscoop.userpublisher.services.BannerSpaceService;
+import com.adscoop.userpublisher.services.BannerSpaceServiceImpl;
+import com.adscoop.userpublisher.services.CampaginService;
+import com.adscoop.userpublisher.services.CampaginServiceImpl;
+import com.adscoop.userpublisher.services.UserServiceImpl;
+import com.adscoop.userpublisher.services.UserSevice;
 import com.google.inject.AbstractModule;
 
 
@@ -24,8 +32,6 @@ public class ConfigModule extends AbstractModule {
         bind(BannerNodeChain.class).asEagerSingleton();
         bind(CampaginChain.class).asEagerSingleton();
 
-
-
         bind(CampaginService.class).to(CampaginServiceImpl.class).asEagerSingleton();
         bind(BannerNodeService.class).to(BannerNodeServiceImpl.class).asEagerSingleton();
         bind(UserSevice.class).to(UserServiceImpl.class).asEagerSingleton();
@@ -37,6 +43,6 @@ public class ConfigModule extends AbstractModule {
         bind(GetReservedBannserSpacesHandler.class).asEagerSingleton();
         bind(PublisherUserException.class).asEagerSingleton();
         bind(GetCampaginHandler.class).asEagerSingleton();
-
+        bind(CORSHandler.class).asEagerSingleton();
     }
 }

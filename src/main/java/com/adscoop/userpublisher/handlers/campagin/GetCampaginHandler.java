@@ -26,18 +26,10 @@ public class GetCampaginHandler implements Handler {
     @Override
     public void handle(Context ctx) throws Exception {
         String token = ctx.getRequest().getHeaders().get("token");
-
         if(!token.isEmpty()){
-
-
             RxRatpack.observeEach(campaginService.findCampaingsByUser(token)).toList().forEach(campagins -> {
-
                 ctx.render(json(campagins));
-
             });
-
-
-
         } else {
             ctx.render(json("no token"));
         }
