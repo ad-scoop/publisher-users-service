@@ -2,7 +2,6 @@ package com.adscoop.userpublisher.chains;
 
 import com.adscoop.userpublisher.handlers.bannerspace.GetReservedBannserSpacesHandler;
 import com.adscoop.userpublisher.handlers.campagin.CreateCampaginHandler;
-import com.adscoop.userpublisher.handlers.campagin.GetCampaginHandler;
 import ratpack.func.Action;
 import ratpack.handling.Chain;
 

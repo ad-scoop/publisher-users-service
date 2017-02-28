@@ -5,6 +5,7 @@
 /.gradle/
 /gradle/
 /out/
-
-
-
+/bin/
+/.settings
+/.project
+/.classpath
