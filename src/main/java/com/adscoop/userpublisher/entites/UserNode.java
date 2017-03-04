@@ -52,6 +52,14 @@ public class UserNode extends Entity {
 	@Relationship(direction = Relationship.OUTGOING, type = "CAMPAGIN_HAS_USER")
 	private Set<Campagin> campagins = new HashSet<>();
 
+	public Set<Campagin> getCampagins() {
+		return campagins;
+	}
+
+	public void setCampagins(Set<Campagin> campagins) {
+		this.campagins = campagins;
+	}
+
 	public String getFirstname() {
 		return firstname;
 	}
@@ -183,17 +191,13 @@ public class UserNode extends Entity {
 		this.accountInformations = accountInformations;
 	}
 
-	public void removeCampagin(final String campaginName) {
-		this.campagins.removeIf(c -> c.getName().equals(campaginName));
-	}
-
 	public void addAddress(AddressNode addressNode) {
 		addressNodes.add(addressNode);
 		addressNode.getUserNodes().add(this);
 	}
 
 	public void addCampagin(Campagin campagin) {
-		campagins.add(campagin);
+		getCampagins().add(campagin);
 		campagin.getUserNodes().add(this);
 	}
 	

@@ -10,6 +10,7 @@ import com.adscoop.userpublisher.handlers.bannerspace.GetReservedBannserSpacesHa
 import com.adscoop.userpublisher.handlers.campagin.CreateCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.DeleteCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.GetCampaginHandler;
+import com.adscoop.userpublisher.handlers.campagin.UpdateCampaginHandler;
 import com.adscoop.userpublisher.services.BannerNodeService;
 import com.adscoop.userpublisher.services.BannerNodeServiceImpl;
 import com.adscoop.userpublisher.services.BannerSpaceService;
@@ -40,6 +41,7 @@ public class ConfigModule extends AbstractModule {
 
         bind(CreateCampaginHandler.class).asEagerSingleton();
         bind(DeleteCampaginHandler.class).asEagerSingleton();
+        bind(UpdateCampaginHandler.class).asEagerSingleton();
 
         bind(AddBannerToCampaginHandler.class).asEagerSingleton();
         bind(GetReservedBannserSpacesHandler.class).asEagerSingleton();
