@@ -28,7 +28,6 @@ import com.google.inject.AbstractModule;
  */
 public class ConfigModule extends AbstractModule {
 
-
     @Override
     protected void configure() {
         bind(BannerNodeChain.class).asEagerSingleton();
@@ -49,4 +48,5 @@ public class ConfigModule extends AbstractModule {
         bind(GetCampaginHandler.class).asEagerSingleton();
         bind(CORSHandler.class).asEagerSingleton();
     }
+    
 }
