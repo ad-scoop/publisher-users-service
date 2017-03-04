@@ -197,8 +197,7 @@ public class UserNode extends Entity {
 	}
 
 	public void addCampagin(Campagin campagin) {
-		getCampagins().add(campagin);
-		campagin.getUserNodes().add(this);
+		this.campagins.add(campagin);
 	}
 	
 }
