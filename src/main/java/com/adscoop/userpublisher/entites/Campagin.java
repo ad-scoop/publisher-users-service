@@ -7,73 +7,78 @@ import java.util.Set;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by thokle on 12/02/2017.
  */
 
 @NodeEntity
-public class Campagin extends  Entity {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Campagin extends Entity {
 
-    private String campagin_name;
+	private String name;
+	private Date startDate;
+	private Date endDate;
+	private double maxPricePrDay;
 
-    private String startDate;
-    private String endDate;
+	@Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_USER")
+	private Set<UserNode> userNodes = new HashSet<>();
 
-    private double maxPricePrDay;
+	@Relationship(direction = Relationship.OUTGOING, type = "CAMPAGIN_HAS_BANNERS")
+	private Set<BannerNode> banners = new HashSet<>();
 
+	public String getName() {
+		return name;
+	}
 
-    @Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_USER")
-    private Set<UserNode>  userNodes  = new HashSet<>();
+	public void setName(String name) {
+		this.name = name;
+	}
 
+	public Date getStartDate() {
+		return startDate;
+	}
 
-    @Relationship(direction = Relationship.OUTGOING, type="CAMPAGIN_HAS_BANNERS")
-    private  Set<BannerNode>  nodes = new HashSet<>();
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
 
+	public Date getEndDate() {
+		return endDate;
+	}
 
-    public String getCampagin_name() {
-        return campagin_name;
-    }
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
 
-    public void setCampagin_name(String campagin_name) {
-        this.campagin_name = campagin_name;
-    }
+	public Set<UserNode> getUserNodes() {
+		return userNodes;
+	}
 
-    public String getStartDate() {
-        return startDate;
-    }
+	public void setUserNodes(Set<UserNode> userNodes) {
+		this.userNodes = userNodes;
+	}
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
+	public Set<BannerNode> getBanners() {
+		return banners;
+	}
 
-    public String getEndDate() {
-        return endDate;
-    }
+	public void setBanners(Set<BannerNode> banners) {
+		this.banners = banners;
+	}
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
+	public void addBanner(BannerNode bannerNode) {
+		banners.add(bannerNode);
+		bannerNode.getNodes().add(this);
 
-    public Set<UserNode> getUserNodes() {
-        return userNodes;
-    }
+	}
 
-    public void setUserNodes(Set<UserNode> userNodes) {
-        this.userNodes = userNodes;
-    }
+	public double getMaxPricePrDay() {
+		return maxPricePrDay;
+	}
 
-    public Set<BannerNode> getNodes() {
-        return nodes;
-    }
-
-    public void setNodes(Set<BannerNode> nodes) {
-        this.nodes = nodes;
-    }
-
-
-    public void addBanner(BannerNode bannerNode) {
-            nodes.add(bannerNode);
-            bannerNode.getNodes().add(this);
-
-    }
+	public void setMaxPricePrDay(double maxPricePrDay) {
+		this.maxPricePrDay = maxPricePrDay;
+	}
 }
