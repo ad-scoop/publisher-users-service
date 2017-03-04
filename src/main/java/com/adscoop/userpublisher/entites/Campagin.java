@@ -6,71 +6,66 @@ import org.neo4j.ogm.annotation.Relationship;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+
 /**
  * Created by thokle on 12/02/2017.
  */
 
 @NodeEntity
-public class Campagin extends  Entity {
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Campagin extends Entity {
 
-    private String campagin_name;
+	private String name;
 
-    private String startDate;
-    private String endDate;
+	private String day ;
+	private String month;
+	private String year;
+	private double maxPricePrDay;
 
-    private double maxPricePrDay;
+	@Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_USER")
+	private Set<UserNode> userNodes = new HashSet<>();
 
+	@Relationship(direction = Relationship.OUTGOING, type = "CAMPAGIN_HAS_BANNERS")
+	private Set<BannerNode> banners = new HashSet<>();
 
-    @Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_USER")
-    private Set<UserNode>  userNodes  = new HashSet<>();
-
-
-    @Relationship(direction = Relationship.OUTGOING, type="CAMPAGIN_HAS_BANNERS")
-    private  Set<BannerNode>  nodes = new HashSet<>();
+	public String getName() {
+		return name;
+	}
 
 
     @Relationship(direction = Relationship.OUTGOING, type = "RESERVED_WEBSITES")
     private Set<WebSiteNode> webSiteNodes = new HashSet<>();
 
-    public String getCampagin_name() {
-        return campagin_name;
-    }
 
-    public void setCampagin_name(String campagin_name) {
-        this.campagin_name = campagin_name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getStartDate() {
-        return startDate;
-    }
 
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
 
-    public String getEndDate() {
-        return endDate;
-    }
+	public Set<UserNode> getUserNodes() {
+		return userNodes;
+	}
 
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
+	public void setUserNodes(Set<UserNode> userNodes) {
+		this.userNodes = userNodes;
+	}
 
-    public Set<UserNode> getUserNodes() {
-        return userNodes;
-    }
+	public Set<BannerNode> getBanners() {
+		return banners;
+	}
 
-    public void setUserNodes(Set<UserNode> userNodes) {
-        this.userNodes = userNodes;
-    }
+	public void setBanners(Set<BannerNode> banners) {
+		this.banners = banners;
+	}
 
-    public Set<BannerNode> getNodes() {
-        return nodes;
-    }
+	public void addBanner(BannerNode bannerNode) {
+		banners.add(bannerNode);
+		bannerNode.getNodes().add(this);
 
-    public void setNodes(Set<BannerNode> nodes) {
-        this.nodes = nodes;
-    }
+	}
 
 
     public   void addReservedWebSite(WebSiteNode webSiteNode){
@@ -79,9 +74,13 @@ public class Campagin extends  Entity {
     }
 
 
-    public void addBanner(BannerNode bannerNode) {
-            nodes.add(bannerNode);
-            bannerNode.getNodes().add(this);
 
-    }
+	public double getMaxPricePrDay() {
+		return maxPricePrDay;
+	}
+
+
+	public void setMaxPricePrDay(double maxPricePrDay) {
+		this.maxPricePrDay = maxPricePrDay;
+	}
 }

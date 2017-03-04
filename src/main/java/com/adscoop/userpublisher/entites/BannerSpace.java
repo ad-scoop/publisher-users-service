@@ -16,186 +16,175 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * Created by thokle on 24/08/2016.
  */
 @NodeEntity
-public class BannerSpace  extends Entity {
+public class BannerSpace extends Entity {
 
+	private String userId;
 
+	private String domain;
 
-    private String userId;
+	private String positionSiteM;
 
-    private String domain;
+	private String positionSiteL;
 
-    private String positionSiteM;
+	private URL Url;
 
-    private String positionSiteL;
+	private String uniqeToken;
 
-        private URL Url;
+	private Double price;
 
-    private String uniqeToken;
+	private Integer lattiude;
 
-   private Double price;
+	private Integer longitude;
 
-    private Integer lattiude;
+	private List<Regions> regions;
 
-    private Integer longitude;
+	private List<String> reservedids;
 
-    private List<Regions> regions;
+	@Labels
+	private List<String> labels = new ArrayList<>();
 
-    private List<String> reservedids;
+	@Relationship(type = "BELONGS_TO_WEBSITE", direction = Relationship.INCOMING)
+	private Set<WebSiteNode> webSiteNodeSet = new HashSet<>();
 
+	@Relationship(type = "BANNERSPACE_HAS_BANNERS", direction = Relationship.OUTGOING)
+	private Set<BannerNode> bannerNodesbannerSpaces = new HashSet<>();
 
-    @Labels
-    private List<String> labels = new ArrayList<>();
+	@Relationship(type = "HAS_CATEGORIES", direction = Relationship.OUTGOING)
+	private Set<Category> categories = new HashSet<>();
 
+	public String getDomain() {
+		return domain;
+	}
 
-    @Relationship(type = "BELONGS_TO_WEBSITE", direction = Relationship.INCOMING)
-    private Set<WebSiteNode> webSiteNodeSet = new HashSet<>();
+	public void setDomain(String domain) {
+		this.domain = domain;
+	}
 
-    @Relationship(type = "BANNERSPACE_HAS_BANNERS" , direction = Relationship.OUTGOING)
-    private Set<BannerNode> bannerNodesbannerSpaces = new HashSet<>();
+	public String getPositionSiteM() {
+		return positionSiteM;
+	}
 
+	public void setPositionSiteM(String positionSiteM) {
+		this.positionSiteM = positionSiteM;
+	}
 
-    @Relationship(type = "HAS_CATEGORIES" , direction = Relationship.OUTGOING)
-    private  Set<Category> categories = new HashSet<>();
+	public String getPositionSiteL() {
+		return positionSiteL;
+	}
 
+	public void setPositionSiteL(String positionSiteL) {
+		this.positionSiteL = positionSiteL;
+	}
 
+	public URL getUrl() {
+		return Url;
+	}
 
-    public String getDomain() {
-        return domain;
-    }
+	public void setUrl(URL url) {
+		Url = url;
+	}
 
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
+	public String getUniqeToken() {
+		return uniqeToken;
+	}
 
-    public String getPositionSiteM() {
-        return positionSiteM;
-    }
+	public void setUniqeToken(String uniqeToken) {
+		this.uniqeToken = uniqeToken;
+	}
 
-    public void setPositionSiteM(String positionSiteM) {
-        this.positionSiteM = positionSiteM;
-    }
+	public Double getPrice() {
+		return price;
+	}
 
-    public String getPositionSiteL() {
-        return positionSiteL;
-    }
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
-    public void setPositionSiteL(String positionSiteL) {
-        this.positionSiteL = positionSiteL;
-    }
+	public Integer getLattiude() {
+		return lattiude;
+	}
 
-    public URL getUrl() {
-        return Url;
-    }
+	public void setLattiude(Integer lattiude) {
+		this.lattiude = lattiude;
+	}
 
-    public void setUrl(URL url) {
-        Url = url;
-    }
+	public Integer getLongitude() {
+		return longitude;
+	}
 
-    public String getUniqeToken() {
-        return uniqeToken;
-    }
+	public void setLongitude(Integer longitude) {
+		this.longitude = longitude;
+	}
 
-    public void setUniqeToken(String uniqeToken) {
-        this.uniqeToken = uniqeToken;
-    }
+	public List<Regions> getRegions() {
+		return regions;
+	}
 
-    public Double getPrice() {
-        return price;
-    }
+	public void setRegions(List<Regions> regions) {
+		this.regions = regions;
+	}
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
+	public List<String> getLabels() {
+		return labels;
+	}
 
-    public Integer getLattiude() {
-        return lattiude;
-    }
+	public void setLabels(List<String> labels) {
+		this.labels = labels;
+	}
 
-    public void setLattiude(Integer lattiude) {
-        this.lattiude = lattiude;
-    }
+	public void setLabel(String label) {
+		this.labels.add(label);
+	}
 
-    public Integer getLongitude() {
-        return longitude;
-    }
+	public String getUserId() {
+		return userId;
+	}
 
-    public void setLongitude(Integer longitude) {
-        this.longitude = longitude;
-    }
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 
-    public List<Regions> getRegions() {
-        return regions;
-    }
+	@JsonIgnore
+	public Set<WebSiteNode> getWebSiteNodeSet() {
+		return webSiteNodeSet;
+	}
 
-    public void setRegions(List<Regions> regions) {
-        this.regions = regions;
-    }
+	public void setWebSiteNodeSet(Set<WebSiteNode> webSiteNodeSet) {
+		this.webSiteNodeSet = webSiteNodeSet;
+	}
 
-    public List<String> getLabels() {
-        return labels;
-    }
+	public Set<BannerNode> getBannerNodesbannerSpaces() {
+		return bannerNodesbannerSpaces;
+	}
 
-    public void setLabels(List<String> labels) {
-        this.labels = labels;
-    }
+	public Set<Category> getCategories() {
+		return categories;
+	}
 
-    public void setLabel(String label){
-        this.labels.add(label);
-    }
+	public List<String> getReservedids() {
+		return reservedids;
+	}
 
-    public String getUserId() {
-        return userId;
-    }
+	public void setReservedids(List<String> reservedids) {
+		this.reservedids = reservedids;
+	}
 
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+	public void setBannerNodesbannerSpaces(Set<BannerNode> bannerNodesbannerSpaces) {
+		this.bannerNodesbannerSpaces = bannerNodesbannerSpaces;
+	}
 
-    @JsonIgnore
-    public Set<WebSiteNode> getWebSiteNodeSet() {
-        return webSiteNodeSet;
-    }
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
+	}
 
-    public void setWebSiteNodeSet(Set<WebSiteNode> webSiteNodeSet) {
-        this.webSiteNodeSet = webSiteNodeSet;
-    }
+	public void addCategory(Category category) {
+		categories.add(category);
+		category.getBannerSpaces().add(this);
+	}
 
-    public Set<BannerNode> getBannerNodesbannerSpaces() {
-        return bannerNodesbannerSpaces;
-    }
+	public void addRegion(Regions regions) {
+		getRegions().add(regions);
+		regions.getBannerSpaces().add(this);
 
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-
-    public List<String> getReservedids() {
-        return reservedids;
-    }
-
-    public void setReservedids(List<String> reservedids) {
-        this.reservedids = reservedids;
-    }
-
-    public void setBannerNodesbannerSpaces(Set<BannerNode> bannerNodesbannerSpaces) {
-        this.bannerNodesbannerSpaces = bannerNodesbannerSpaces;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
-
-    public  void addCategory(Category category){
-        categories.add(category);
-        category.getBannerSpaces().add(this);
-    }
-
-
-
-    public void addRegion(Regions regions){
-        getRegions().add(regions);
-        regions.getBannerSpaces().add(this);
-
-    }
+	}
 }

@@ -2,9 +2,10 @@ package com.adscoop.userpublisher;
 
 import com.adscoop.userpublisher.chains.BannerNodeChain;
 import com.adscoop.userpublisher.chains.CampaginChain;
+import com.adscoop.userpublisher.configurations.ConfigModule;
+import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.modules.Config;
 import com.adscoop.userpublisher.modules.ServiceCommonConfigModule;
-import com.adscoop.userpublisher.configurations.ConfigModule;
 
 import ratpack.guice.Guice;
 import ratpack.rx.RxRatpack;
@@ -31,7 +32,9 @@ public class Starter {
                 .registry(Guice.registry(bindingsSpec -> bindingsSpec
                 		.module(ConfigModule.class)
                 		.module(ServiceCommonConfigModule.class))).
-                        handlers(chain -> chain.prefix("banners", BannerNodeChain.class)
+                        handlers(chain -> chain
+                        		.all(CORSHandler.class)
+                        		.prefix("banners", BannerNodeChain.class)
                         		.prefix("campagin", CampaginChain.class)));
     }
     

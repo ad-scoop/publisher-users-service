@@ -28,7 +28,7 @@ public class CampaginServiceImpl implements CampaginService {
     @Override
     public Promise<Iterable<Campagin>> findCampaingsByUser(String token) throws Exception {
         try {
-            return Promise.value(session.query(Campagin.class,"match (u:UserNode)-[:CAMPAGIN_HAS_USER]->(c:Campagin) where u.token='"+token+"' return c", Collections.EMPTY_MAP));
+            return Promise.value(session.query(Campagin.class,"match (u:UserNode)-[:CAMPAGIN_HAS_USER]->(c:Campagin) where u.token='"+token+"' return c", Collections.emptyMap()));
         }catch (Exception e){
              throw new Exception(e);
         }
@@ -37,7 +37,8 @@ public class CampaginServiceImpl implements CampaginService {
 
     public Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception {
         try{
-            return Promise.value(session.queryForObject(Campagin.class, "match (u)-[:CAMPAGIN_HAS_USER]->(c) where u.token = '"+token +"' and c.campagin_name='"+campaginname+"' return c",Collections.EMPTY_MAP));
+
+            return Promise.value(session.queryForObject(Campagin.class, "match (u)-[:CAMPAGIN_HAS_USER]->(c) where u.token = '"+token +"' and c.campagin_name='"+campaginname+"' return c", Collections.emptyMap()));
         }catch (Exception e){
             throw new Exception(e);
         }
