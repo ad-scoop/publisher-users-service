@@ -6,6 +6,7 @@ import com.adscoop.userpublisher.chains.CampaginChain;
 import com.adscoop.userpublisher.exceptions.PublisherUserException;
 import com.adscoop.userpublisher.handlers.banners.AddBannerToCampaginHandler;
 import com.adscoop.userpublisher.handlers.bannerspace.GetReservedBannserSpacesHandler;
+import com.adscoop.userpublisher.handlers.campagin.AddWebSiteToCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.CreateCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.GetCampaginHandler;
 import com.adscoop.userpublisher.services.*;
@@ -37,6 +38,7 @@ public class ConfigModule extends AbstractModule {
         bind(GetReservedBannserSpacesHandler.class).asEagerSingleton();
         bind(PublisherUserException.class).asEagerSingleton();
         bind(GetCampaginHandler.class).asEagerSingleton();
+        bind(AddWebSiteToCampaginHandler.class).asEagerSingleton();
 
     }
 }

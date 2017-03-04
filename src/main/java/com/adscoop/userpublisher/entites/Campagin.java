@@ -1,11 +1,10 @@
 package com.adscoop.userpublisher.entites;
 
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
-
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
+
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by thokle on 12/02/2017.
@@ -29,6 +28,9 @@ public class Campagin extends  Entity {
     @Relationship(direction = Relationship.OUTGOING, type="CAMPAGIN_HAS_BANNERS")
     private  Set<BannerNode>  nodes = new HashSet<>();
 
+
+    @Relationship(direction = Relationship.OUTGOING, type = "RESERVED_WEBSITES")
+    private Set<WebSiteNode> webSiteNodes = new HashSet<>();
 
     public String getCampagin_name() {
         return campagin_name;
@@ -68,6 +70,12 @@ public class Campagin extends  Entity {
 
     public void setNodes(Set<BannerNode> nodes) {
         this.nodes = nodes;
+    }
+
+
+    public   void addReservedWebSite(WebSiteNode webSiteNode){
+        webSiteNodes.add(webSiteNode);
+        webSiteNode.getCampaginList().add(this);
     }
 
 

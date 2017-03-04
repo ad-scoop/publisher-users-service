@@ -17,10 +17,12 @@ public interface CampaginService {
 
    Promise<Iterable<Campagin>> findCampaingsByUser(String  token) throws Exception;
 
-    Optional<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
+    Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
     void updateCampagin(Campagin campagin);
 
     void deleteCampagin(Campagin campagin);
+
+
 
 
 }
