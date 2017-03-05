@@ -8,14 +8,14 @@ public class
 CORSHandler implements Handler {
 
 	public static final String ACCESS_CONTROL_ALLOW_HEADERS = "Access-Control-Allow-Headers";
-	public static final String ACCESS_CONTROL_ALLOW_HEADERS_VALUE = "x-requested-with, origin, content-type, accept, token";
+	public static final String ACCESS_CONTROL_ALLOW_HEADERS_VALUE = "x-requested-with, origin, content-type, accept, token, X-Custom-Header";
 
 	public static final String ACCESS_CONTROL_ALLOW_ORIGIN = "Access-Control-Allow-Origin";
 	public static final String ACCESS_CONTROL_ALLOW_ORIGIN_VALUE = "*";
 
 
 	public static final String ACCESS_CONTROL_ALLOW_METHODS = "Access-Control-Allow-Methods";
-	public static final String ACCESS_CONTROL_ALLOW_METHODS_VALUE = "GET POST DELETE OPTIONS";
+	public static final String ACCESS_CONTROL_ALLOW_METHODS_VALUE = "GET, POST, DELETE, OPTIONS";
 
 	@Override
 	public void handle(Context ctx) throws Exception {

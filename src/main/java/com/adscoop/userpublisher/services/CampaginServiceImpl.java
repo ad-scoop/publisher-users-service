@@ -5,16 +5,14 @@ import com.adscoop.userpublisher.entites.Campagin;
 import org.neo4j.ogm.session.Session;
 import ratpack.exec.Promise;
 
-
 import java.util.Collections;
 import java.util.Optional;
-
-
 
 /**
  * Created by thokle on 27/01/2017.
  */
 public class CampaginServiceImpl implements CampaginService {
+
 
 
     private Session session;
@@ -53,6 +51,6 @@ public class CampaginServiceImpl implements CampaginService {
 
     @Override
     public void updateCampagin(Campagin campagin) {
-         session.save(campagin);
+        session.save(campagin);
     }
 }

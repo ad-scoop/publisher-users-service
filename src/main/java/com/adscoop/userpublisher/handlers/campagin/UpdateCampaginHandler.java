@@ -1,5 +1,7 @@
 package com.adscoop.userpublisher.handlers.campagin;
 
+import static ratpack.jackson.Jackson.fromJson;
+
 import java.util.Optional;
 
 import com.adscoop.userpublisher.entites.Campagin;
@@ -11,13 +13,13 @@ import com.google.inject.Inject;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
-public class DeleteCampaginHandler implements Handler {
+public class UpdateCampaginHandler implements Handler {
 
 	private ExtractUser extractUser;
 	private CampaginService campaginService;
 
 	@Inject
-	public DeleteCampaginHandler(UserSevice userSevice, CampaginService campaginService) {
+	public UpdateCampaginHandler(UserSevice userSevice, CampaginService campaginService) {
 		this.campaginService = campaginService;
 		this.extractUser = new ExtractUser(userSevice);
 	}
@@ -25,15 +27,10 @@ public class DeleteCampaginHandler implements Handler {
 	@Override
 	public void handle(Context ctx) throws Exception {
 		this.extractUser.handle(ctx, (user) -> {
-			Optional<Campagin> campagin = findCampagin(ctx, user);
-			campaginService.deleteCampagin(campagin.get());
+			ctx.parse(fromJson(Campagin.class)).then(campagin -> {
+				campaginService.updateCampagin(campagin);
+			});
 		}); 
-	}
-
-	private Optional<Campagin> findCampagin(Context ctx, UserNode user) throws Exception {
-		return campaginService.findCampaginsByUserTokenAndName(
-				ctx.getRequest().getQueryParams().get("name"), 
-				user.getToken());
 	}
 
 }
