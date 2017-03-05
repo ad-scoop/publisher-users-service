@@ -11,6 +11,6 @@ import ratpack.handling.Chain;
 public class BannerNodeChain implements Action<Chain> {
     @Override
     public void execute(Chain chain) throws Exception {
-        chain.all(CORSHandler.class).post(":campaginname",AddBannerToCampaginHandler.class);
+        chain.post(":campaginname",AddBannerToCampaginHandler.class);
     }
 }

@@ -26,8 +26,7 @@ public class CampaginChain implements Action<Chain> {
 
 
 
-        chain.all(CORSHandler.class)
-
+        chain
 
 
         	.post("create", CreateCampaginHandler.class)
