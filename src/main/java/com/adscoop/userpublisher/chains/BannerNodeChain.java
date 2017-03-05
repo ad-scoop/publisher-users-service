@@ -1,5 +1,6 @@
 package com.adscoop.userpublisher.chains;
 
+import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.handlers.banners.AddBannerToCampaginHandler;
 import ratpack.func.Action;
 import ratpack.handling.Chain;
@@ -10,6 +11,6 @@ import ratpack.handling.Chain;
 public class BannerNodeChain implements Action<Chain> {
     @Override
     public void execute(Chain chain) throws Exception {
-        chain.post(":campaginname",AddBannerToCampaginHandler.class);
+        chain.all(CORSHandler.class).post(":campaginname",AddBannerToCampaginHandler.class);
     }
 }

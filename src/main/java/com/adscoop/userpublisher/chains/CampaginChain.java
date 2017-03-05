@@ -25,13 +25,17 @@ public class CampaginChain implements Action<Chain> {
     public void execute(Chain chain) throws Exception {
 
 
+
         chain.all(CORSHandler.class)
+
+
+
         	.post("create", CreateCampaginHandler.class)
         	.post("update", UpdateCampaginHandler.class)
         	.delete("remove", DeleteCampaginHandler.class)
         	.get("reservedbannserspaces", GetReservedBannserSpacesHandler.class)
         	.get("listUserCampagins", GetCampaginHandler.class)
-				.post("addWebSiteToCampagin/:campagin_name", AddWebSiteToCampaginHandler.class);
-
+			.post("addWebSiteToCampagin/:campagin_name", AddWebSiteToCampaginHandler.class);
     }
+    
 }
