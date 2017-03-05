@@ -4,6 +4,7 @@ import com.adscoop.userpublisher.entites.BannerNode;
 import com.adscoop.userpublisher.entites.Campagin;
 import com.adscoop.userpublisher.services.CampaginService;
 import com.google.inject.Inject;
+import ratpack.exec.Promise;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
@@ -31,9 +32,9 @@ public class AddBannerToCampaginHandler implements Handler {
         ctx.parse(fromJson(BannerNode.class)).then(bannerNode -> {
     String token = ctx.getRequest().getHeaders().get("token");
     String campaginname = ctx.getPathTokens().get("campaginname");
-        Optional<Campagin> campagin =  campaginService.findCampaginsByUserTokenAndName(campaginname,token);
+        Promise<Campagin> campagin =  campaginService.findCampaginsByUserTokenAndName(campaginname,token);
 
-        if(campagin.isPresent()){
+      campagin.then( campagin1 -> {
             BannerNode banner = new BannerNode();
 
 
@@ -51,17 +52,16 @@ public class AddBannerToCampaginHandler implements Handler {
 
 
             banner.setUrl(bannerNode.getUrl());
-banner.setFiletype(bannerNode.getFiletype());
+            banner.setFiletype(bannerNode.getFiletype());
 
 
-            campagin.get().addBanner(banner);
+            campagin1.addBanner(banner);
 
-Campagin campagin1 = campagin.get();
-campagin1.addBanner(banner);
+
             campaginService.updateCampagin(campagin1);
-            ctx.render(json(campagin.get()));
-        }
+            ctx.render(json(campagin1));
 
+        });
 
         });
 

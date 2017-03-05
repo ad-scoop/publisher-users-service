@@ -36,6 +36,18 @@ public class WebSiteNode extends Entity {
     private Set<Regions> regionss = new HashSet<>();
 
     private List<Campagin> campaginList = new ArrayList<>();
+    private List<Company>  companies = new ArrayList<>();
+
+
+    @JsonIgnore
+    public List<Company> getCompanies() {
+        return companies;
+    }
+
+    public void setCompanies(List<Company> companies) {
+        this.companies = companies;
+    }
+
     public int getPort() {
         return port;
     }
@@ -82,6 +94,7 @@ public class WebSiteNode extends Entity {
         bannerSpace.getWebSiteNodeSet().add(this);
     }
 
+    @JsonIgnore
     public List<Campagin> getCampaginList() {
         return campaginList;
     }

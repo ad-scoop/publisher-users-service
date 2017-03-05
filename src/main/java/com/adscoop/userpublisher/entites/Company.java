@@ -103,7 +103,7 @@ public class Company  extends Entity {
 
     public void addWebSite(WebSiteNode webSiteNode){
         this.webSiteNodes.add(webSiteNode);
-        webSiteNode.getCompanyNodes().add(this);
+        webSiteNode.getCompanies().add(this);
 
     }
 

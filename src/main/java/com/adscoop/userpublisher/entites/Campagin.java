@@ -19,9 +19,15 @@ public class Campagin extends Entity {
 
 	private String name;
 
-	private String day ;
-	private String month;
-	private String year;
+	private String startDay ;
+	private String startMonth;
+	private String startYear;
+
+	private String endDay;
+	private String endMonth;
+	private String endYear;
+
+
 	private double maxPricePrDay;
 
 	@Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_USER")
@@ -82,5 +88,54 @@ public class Campagin extends Entity {
 
 	public void setMaxPricePrDay(double maxPricePrDay) {
 		this.maxPricePrDay = maxPricePrDay;
+	}
+
+
+	public String getStartDay() {
+		return startDay;
+	}
+
+	public void setStartDay(String startDay) {
+		this.startDay = startDay;
+	}
+
+	public String getStartMonth() {
+		return startMonth;
+	}
+
+	public void setStartMonth(String startMonth) {
+		this.startMonth = startMonth;
+	}
+
+	public String getStartYear() {
+		return startYear;
+	}
+
+	public void setStartYear(String startYear) {
+		this.startYear = startYear;
+	}
+
+	public String getEndDay() {
+		return endDay;
+	}
+
+	public void setEndDay(String endDay) {
+		this.endDay = endDay;
+	}
+
+	public String getEndMonth() {
+		return endMonth;
+	}
+
+	public void setEndMonth(String endMonth) {
+		this.endMonth = endMonth;
+	}
+
+	public String getEndYear() {
+		return endYear;
+	}
+
+	public void setEndYear(String endYear) {
+		this.endYear = endYear;
 	}
 }

@@ -11,14 +11,7 @@ import com.adscoop.userpublisher.handlers.campagin.AddWebSiteToCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.CreateCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.DeleteCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.GetCampaginHandler;
-import com.adscoop.userpublisher.services.BannerNodeService;
-import com.adscoop.userpublisher.services.BannerNodeServiceImpl;
-import com.adscoop.userpublisher.services.BannerSpaceService;
-import com.adscoop.userpublisher.services.BannerSpaceServiceImpl;
-import com.adscoop.userpublisher.services.CampaginService;
-import com.adscoop.userpublisher.services.CampaginServiceImpl;
-import com.adscoop.userpublisher.services.UserServiceImpl;
-import com.adscoop.userpublisher.services.UserSevice;
+import com.adscoop.userpublisher.services.*;
 import com.google.inject.AbstractModule;
 
 
@@ -38,7 +31,7 @@ public class ConfigModule extends AbstractModule {
         bind(BannerNodeService.class).to(BannerNodeServiceImpl.class).asEagerSingleton();
         bind(UserSevice.class).to(UserServiceImpl.class).asEagerSingleton();
         bind(BannerSpaceService.class).to(BannerSpaceServiceImpl.class).asEagerSingleton();
-
+        bind(WebSiteService.class).to(WebSiteServiceImpl.class).asEagerSingleton();
         bind(CreateCampaginHandler.class).asEagerSingleton();
         bind(DeleteCampaginHandler.class).asEagerSingleton();
 
