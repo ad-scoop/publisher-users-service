@@ -1,6 +1,8 @@
 package com.adscoop.userpublisher.entites;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
@@ -17,20 +19,18 @@ import java.util.Set;
  */
 
 @NodeEntity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class BannerNode extends Entity {
 
-	private String domain;
 	private String positionSiteM;
 	private String positionSiteL;
-	private String url;
 	private String uniqeToken;
-	private Integer lenght;
+	private Integer width;
 	private Integer height;
-	private String counterUrl;
-	private Integer counter;
+	private Integer clicks;
 	private String bannerSpaceToken;
-	private String pictureUrl;
-	private String filetype;
+	private String picture;
+	private String counterUrl;
 
 	@Labels
 	private List<String> labels = new ArrayList<>();
@@ -48,14 +48,6 @@ public class BannerNode extends Entity {
 	@Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_BANNERS")
 	private Set<Campagin> nodes = new HashSet<>();
 
-	public String getDomain() {
-		return domain;
-	}
-
-	public void setDomain(String domain) {
-		this.domain = domain;
-	}
-
 	public String getPositionSiteM() {
 		return positionSiteM;
 	}
@@ -72,14 +64,6 @@ public class BannerNode extends Entity {
 		this.positionSiteL = positionSiteL;
 	}
 
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		url = url;
-	}
-
 	public String getUniqeToken() {
 		return uniqeToken;
 	}
@@ -88,12 +72,12 @@ public class BannerNode extends Entity {
 		this.uniqeToken = uniqeToken;
 	}
 
-	public Integer getLenght() {
-		return lenght;
+	public Integer getWidth() {
+		return width;
 	}
 
-	public void setLenght(Integer lenght) {
-		this.lenght = lenght;
+	public void setWidth(Integer width) {
+		this.width = width;
 	}
 
 	public Integer getHeight() {
@@ -112,12 +96,12 @@ public class BannerNode extends Entity {
 		this.counterUrl = counterUrl;
 	}
 
-	public Integer getCounter() {
-		return counter;
+	public Integer getClicks() {
+		return clicks;
 	}
 
-	public void setCounter(Integer counter) {
-		this.counter = counter;
+	public void setClicks(Integer clicks) {
+		this.clicks = clicks;
 	}
 
 	public List<String> getLabels() {
@@ -128,12 +112,12 @@ public class BannerNode extends Entity {
 		this.labels = labels;
 	}
 
-	public String getPictureUrl() {
-		return pictureUrl;
+	public String getPicture() {
+		return picture;
 	}
 
-	public void setPictureUrl(String pictureUrl) {
-		this.pictureUrl = pictureUrl;
+	public void setPicture(String picture) {
+		this.picture = picture;
 	}
 
 	public Set<FootPrintInformationNode> getFootPrintInformationNodes() {
@@ -190,11 +174,4 @@ public class BannerNode extends Entity {
 		this.nodes = nodes;
 	}
 
-	public String getFiletype() {
-		return filetype;
-	}
-
-	public void setFiletype(String filetype) {
-		this.filetype = filetype;
-	}
 }
