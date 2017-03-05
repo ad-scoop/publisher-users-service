@@ -1,13 +1,12 @@
 package com.adscoop.userpublisher.handlers.campagin;
 
-import java.util.Optional;
-
 import com.adscoop.userpublisher.entites.Campagin;
 import com.adscoop.userpublisher.entites.UserNode;
 import com.adscoop.userpublisher.services.CampaginService;
 import com.adscoop.userpublisher.services.UserSevice;
 import com.google.inject.Inject;
 
+import ratpack.exec.Promise;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
@@ -25,12 +24,12 @@ public class DeleteCampaginHandler implements Handler {
 	@Override
 	public void handle(Context ctx) throws Exception {
 		this.extractUser.handle(ctx, (user) -> {
-			Optional<Campagin> campagin = findCampagin(ctx, user);
-			campaginService.deleteCampagin(campagin.get());
+			findCampagin(ctx, user)
+				.then(campagin -> campaginService.deleteCampagin(campagin));
 		}); 
 	}
 
-	private Optional<Campagin> findCampagin(Context ctx, UserNode user) throws Exception {
+	private Promise<Campagin> findCampagin(Context ctx, UserNode user) throws Exception {
 		return campaginService.findCampaginsByUserTokenAndName(
 				ctx.getRequest().getQueryParams().get("name"), 
 				user.getToken());

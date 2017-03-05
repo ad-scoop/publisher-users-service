@@ -8,7 +8,6 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 /**
  * Created by thokle on 12/02/2017.
  */
@@ -19,14 +18,9 @@ public class Campagin extends Entity {
 
 	private String name;
 
-	private String startDay ;
-	private String startMonth;
-	private String startYear;
+	private long startDate;
 
-	private String endDay;
-	private String endMonth;
-	private String endYear;
-
+	private long endDate;
 
 	private double maxPricePrDay;
 
@@ -40,16 +34,12 @@ public class Campagin extends Entity {
 		return name;
 	}
 
-
-    @Relationship(direction = Relationship.OUTGOING, type = "RESERVED_WEBSITES")
-    private Set<WebSiteNode> webSiteNodes = new HashSet<>();
-
+	@Relationship(direction = Relationship.OUTGOING, type = "RESERVED_WEBSITES")
+	private Set<WebSiteNode> webSiteNodes = new HashSet<>();
 
 	public void setName(String name) {
 		this.name = name;
 	}
-
-
 
 	public Set<UserNode> getUserNodes() {
 		return userNodes;
@@ -70,72 +60,35 @@ public class Campagin extends Entity {
 	public void addBanner(BannerNode bannerNode) {
 		banners.add(bannerNode);
 		bannerNode.getNodes().add(this);
-
 	}
 
-
-    public   void addReservedWebSite(WebSiteNode webSiteNode){
-        webSiteNodes.add(webSiteNode);
-        webSiteNode.getCampaginList().add(this);
-    }
-
-
+	public void addReservedWebSite(WebSiteNode webSiteNode) {
+		webSiteNodes.add(webSiteNode);
+		webSiteNode.getCampaginList().add(this);
+	}
 
 	public double getMaxPricePrDay() {
 		return maxPricePrDay;
 	}
 
-
 	public void setMaxPricePrDay(double maxPricePrDay) {
 		this.maxPricePrDay = maxPricePrDay;
 	}
 
-
-	public String getStartDay() {
-		return startDay;
+	public long getStartDate() {
+		return startDate;
 	}
 
-	public void setStartDay(String startDay) {
-		this.startDay = startDay;
+	public void setStartDay(long startDate) {
+		this.startDate = startDate;
 	}
 
-	public String getStartMonth() {
-		return startMonth;
+	public long getEndDate() {
+		return endDate;
 	}
 
-	public void setStartMonth(String startMonth) {
-		this.startMonth = startMonth;
+	public void setEndDate(long endDate) {
+		this.endDate = endDate;
 	}
 
-	public String getStartYear() {
-		return startYear;
-	}
-
-	public void setStartYear(String startYear) {
-		this.startYear = startYear;
-	}
-
-	public String getEndDay() {
-		return endDay;
-	}
-
-	public void setEndDay(String endDay) {
-		this.endDay = endDay;
-	}
-
-	public String getEndMonth() {
-		return endMonth;
-	}
-
-	public void setEndMonth(String endMonth) {
-		this.endMonth = endMonth;
-	}
-
-	public String getEndYear() {
-		return endYear;
-	}
-
-	public void setEndYear(String endYear) {
-		this.endYear = endYear;
-	}
 }

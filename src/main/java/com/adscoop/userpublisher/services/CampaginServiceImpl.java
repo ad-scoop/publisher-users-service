@@ -36,7 +36,7 @@ public class CampaginServiceImpl implements CampaginService {
     public Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception {
         try{
 
-            return Promise.value(session.queryForObject(Campagin.class, "match (u)-[:CAMPAGIN_HAS_USER]->(c) where u.token = '"+token +"' and c.campagin_name='"+campaginname+"' return c", Collections.emptyMap()));
+            return Promise.value(session.queryForObject(Campagin.class, "match (u)-[:CAMPAGIN_HAS_USER]->(c) where u.token = '"+token +"' and c.name='"+campaginname+"' return c", Collections.emptyMap()));
         }catch (Exception e){
             throw new Exception(e);
         }
