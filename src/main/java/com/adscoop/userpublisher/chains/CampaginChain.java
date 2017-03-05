@@ -23,8 +23,12 @@ public class CampaginChain implements Action<Chain> {
 
     @Override
     public void execute(Chain chain) throws Exception {
+
+
+
         chain
-			.all(CORSHandler.class)
+
+
         	.post("create", CreateCampaginHandler.class)
         	.post("update", UpdateCampaginHandler.class)
         	.delete("remove", DeleteCampaginHandler.class)
