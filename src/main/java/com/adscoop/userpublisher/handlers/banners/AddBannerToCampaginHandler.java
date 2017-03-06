@@ -32,11 +32,16 @@ public class AddBannerToCampaginHandler implements Handler {
 			String token = ctx.getRequest().getHeaders().get("token");
 			String campaginname = ctx.getPathTokens().get("campaginname");
 			Promise<Campagin> promise = campaginService.findCampaginsByUserTokenAndName(campaginname, token);
-
 			promise.then(campagin -> {
-				campagin.addBanner(bannerNode);
-				campaginService.updateCampagin(campagin);
-				ctx.render(json(campagin));
+
+			    if(campagin==null){
+			        ctx.render(json("NO CAMPAGIN FOUND"));
+                }else {
+
+                    campagin.addBanner(bannerNode);
+                    campaginService.updateCampagin(campagin);
+                    ctx.render(json(campagin));
+                }
 			});
 
 		});

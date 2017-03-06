@@ -18,7 +18,7 @@ public interface CampaginService {
    Promise<Iterable<Campagin>> findCampaingsByUser(String  token) throws Exception;
 
     Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
-    void updateCampagin(Campagin campagin);
+    void updateCampagin(Campagin campagin) throws Exception;
 
     void deleteCampagin(Campagin campagin);
 

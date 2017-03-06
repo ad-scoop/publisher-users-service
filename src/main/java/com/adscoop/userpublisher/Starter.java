@@ -3,6 +3,8 @@ package com.adscoop.userpublisher;
 import com.adscoop.userpublisher.chains.BannerNodeChain;
 import com.adscoop.userpublisher.chains.CampaginChain;
 import com.adscoop.userpublisher.configurations.ConfigModule;
+import com.adscoop.userpublisher.exceptions.PublisherUserException;
+import com.adscoop.userpublisher.exceptions.ServerErrorHandler;
 import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.modules.Config;
 import com.adscoop.userpublisher.modules.ServiceCommonConfigModule;
@@ -26,12 +28,12 @@ public class Starter {
         				.props("ratpack.properties")
         				.yaml("database.yaml")
         				.require("/db", Config.class)
-        				.env()
+        				.env().development(false)
         				.sysProps()
         				.build())
                 .registry(Guice.registry(bindingsSpec -> bindingsSpec
                 		.module(ConfigModule.class)
-                		.module(ServiceCommonConfigModule.class))).
+                		.module(ServiceCommonConfigModule.class).bind(PublisherUserException.class).bind(ServerErrorHandler.class))).
                         handlers(chain -> chain
                         		.all(CORSHandler.class)
                         		.prefix("banners", BannerNodeChain.class)

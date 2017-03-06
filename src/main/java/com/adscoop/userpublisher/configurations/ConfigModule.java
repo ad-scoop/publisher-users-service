@@ -4,6 +4,7 @@ package com.adscoop.userpublisher.configurations;
 import com.adscoop.userpublisher.chains.BannerNodeChain;
 import com.adscoop.userpublisher.chains.CampaginChain;
 import com.adscoop.userpublisher.exceptions.PublisherUserException;
+import com.adscoop.userpublisher.exceptions.ServerErrorHandler;
 import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.handlers.banners.AddBannerToCampaginHandler;
 import com.adscoop.userpublisher.handlers.bannerspace.GetReservedBannserSpacesHandler;
@@ -56,6 +57,7 @@ public class ConfigModule extends AbstractModule {
 
 
         bind(CORSHandler.class).asEagerSingleton();
+        bind(ServerErrorHandler.class).asEagerSingleton();
 
     }
     

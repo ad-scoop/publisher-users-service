@@ -7,12 +7,14 @@ import java.util.Optional;
 import com.adscoop.userpublisher.entites.UserNode;
 import com.adscoop.userpublisher.services.UserSevice;
 
+import com.google.inject.Inject;
 import ratpack.handling.Context;
 
 public class ExtractUser {
 
 	private UserSevice userSevice;
 
+	@Inject
 	public ExtractUser(UserSevice userSevice) {
 		this.userSevice = userSevice;
 	}

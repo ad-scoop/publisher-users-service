@@ -50,7 +50,11 @@ public class CampaginServiceImpl implements CampaginService {
     }
 
     @Override
-    public void updateCampagin(Campagin campagin) {
+    public void updateCampagin(Campagin campagin) throws Exception {
+        try{
         session.save(campagin);
+    }   catch (Exception e){
+        throw  new Exception(e.getMessage());
+        }
     }
 }
