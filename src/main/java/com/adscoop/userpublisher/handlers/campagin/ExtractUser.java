@@ -9,6 +9,7 @@ import com.adscoop.userpublisher.services.UserSevice;
 
 import com.google.inject.Inject;
 import ratpack.handling.Context;
+import ratpack.registry.Registry;
 
 public class ExtractUser {
 
@@ -31,7 +32,7 @@ public class ExtractUser {
 		} else {
 			ctx.render(json("no token present"));
 		}
-		ctx.render(json("campagin was handled"));
+		ctx.next(Registry.single(UpdateCampaginHandler.class));
 	}
 
 }
