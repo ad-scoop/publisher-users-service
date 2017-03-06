@@ -13,48 +13,36 @@ import java.util.Optional;
  */
 public class CampaginServiceImpl implements CampaginService {
 
+	private Session session;
 
+	@Inject
+	public CampaginServiceImpl(Session session) {
+		this.session = session;
+	}
 
-    private Session session;
+	@Override
+	public Promise<Iterable<Campagin>> findCampaingsByUser(String token) {
+		return Promise.value(session.query(Campagin.class,
+				"match (u:UserNode)-[:CAMPAGIN_HAS_USER]->(c:Campagin) where u.token='" + token + "' return c",
+				Collections.emptyMap()));
+	}
 
+	public Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) {
+		return Promise
+				.value(session.queryForObject(Campagin.class, "match (u)-[:CAMPAGIN_HAS_USER]->(c) where u.token = '"
+						+ token + "' and c.name='" + campaginname + "' return c", Collections.emptyMap()));
+	}
 
-    @Inject
-    public CampaginServiceImpl(Session session) {
-        this.session = session;
-    }
+	@Override
+	public void deleteCampagin(Campagin campagin) {
+		if (session.detachNodeEntity(campagin.getId())) {
+			session.delete(campagin);
+		}
+	}
 
-    @Override
-    public Promise<Iterable<Campagin>> findCampaingsByUser(String token) throws Exception {
-        try {
-            return Promise.value(session.query(Campagin.class,"match (u:UserNode)-[:CAMPAGIN_HAS_USER]->(c:Campagin) where u.token='"+token+"' return c", Collections.emptyMap()));
-        }catch (Exception e){
-             throw new Exception(e);
-        }
-    }
-
-
-    public Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception {
-        try{
-
-            return Promise.value(session.queryForObject(Campagin.class, "match (u)-[:CAMPAGIN_HAS_USER]->(c) where u.token = '"+token +"' and c.name='"+campaginname+"' return c", Collections.emptyMap()));
-        }catch (Exception e){
-            throw new Exception(e);
-        }
-    }
-
-    @Override
-    public void deleteCampagin(Campagin campagin) {
-        if(session.detachNodeEntity(campagin.getId())){
-            session.delete(campagin);
-        }
-    }
-
-    @Override
-    public void updateCampagin(Campagin campagin) throws Exception {
-        try{
-        session.save(campagin);
-    }   catch (Exception e){
-        throw  new Exception(e.getMessage());
-        }
-    }
+	@Override
+	public void updateCampagin(Campagin campagin) {
+		session.save(campagin);
+	}
+	
 }

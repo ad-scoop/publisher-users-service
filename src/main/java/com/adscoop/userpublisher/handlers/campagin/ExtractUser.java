@@ -32,7 +32,7 @@ public class ExtractUser {
 		} else {
 			ctx.render(json("no token present"));
 		}
-		ctx.next(Registry.single(UpdateCampaginHandler.class));
+		
 	}
 
 }

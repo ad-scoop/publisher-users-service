@@ -1,6 +1,7 @@
 package com.adscoop.userpublisher.handlers.campagin;
 
 import static ratpack.jackson.Jackson.fromJson;
+import static ratpack.jackson.Jackson.json;
 
 import com.adscoop.userpublisher.entites.Campagin;
 import com.adscoop.userpublisher.services.UserSevice;
@@ -29,6 +30,7 @@ public class CreateCampaginHandler implements Handler {
 			ctx.parse(fromJson(Campagin.class)).then(campagin -> {
 				user.addCampagin(campagin);
 				userSevice.saveOrUpate(user);
+				ctx.render(json("created ok"));
 			});
 		}); 
 	}
