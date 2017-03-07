@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 import org.neo4j.ogm.annotations.Labels;
@@ -35,6 +36,7 @@ public class FootPrintInformationNode extends Entity {
         this.list = list;
     }
 
+    @JsonIgnore
     public List<BannerNode> getBannerNodeSet() {
         return bannerNodeSet;
     }
