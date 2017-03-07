@@ -10,23 +10,19 @@ import java.util.Collections;
 /**
  * Created by thokle on 04/03/2017.
  */
-public class WebSiteServiceImpl implements  WebSiteService {
+public class WebSiteServiceImpl implements WebSiteService {
 
-    private Session session;
+	private Session session;
 
-    @Inject
-    public WebSiteServiceImpl(Session session) {
-        this.session = session;
-    }
+	@Inject
+	public WebSiteServiceImpl(Session session) {
+		this.session = session;
+	}
 
-    @Override
-    public Promise<WebSiteNode> findById(Long id) throws Exception {
+	@Override
+	public Promise<WebSiteNode> findById(Long id) {
+		return Promise.value(session.queryForObject(WebSiteNode.class,
+				"match (b:WebiteNode) where ID(b)=" + id + " return b", Collections.emptyMap()));
+	}
 
-        try{
-            return Promise.value(session.queryForObject(WebSiteNode.class,"match (b:WebiteNode) where ID(b)=" + id + " return b", Collections.emptyMap()));
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-
-    }
 }

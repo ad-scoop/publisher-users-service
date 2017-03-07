@@ -12,21 +12,16 @@ import java.util.Optional;
  */
 public class BannerSpaceServiceImpl implements BannerSpaceService {
 
-    private Session session;
+	private Session session;
 
+	@Inject
+	public BannerSpaceServiceImpl(Session session) {
+		this.session = session;
+	}
 
-    @Inject
-    public BannerSpaceServiceImpl(Session session) {
-        this.session = session;
-    }
-
-    @Override
-    public Optional<Iterable<BannerSpace>> getReservedBannerSpaces(String reservedtoken) throws Exception {
-       try{
-           return  Optional.ofNullable(session.query(BannerSpace.class,"match (b) where  a.reservedids IN ["+ reservedtoken +"] return b " , Collections.EMPTY_MAP));
-       }catch (Exception e){
-           throw  new Exception(e.getMessage());
-
-       }
-    }
+	@Override
+	public Optional<Iterable<BannerSpace>> getReservedBannerSpaces(String reservedtoken) {
+		return Optional.ofNullable(session.query(BannerSpace.class,
+				"match (b) where  a.reservedids IN [" + reservedtoken + "] return b ", Collections.emptyMap()));
+	}
 }

@@ -8,7 +8,6 @@ import ratpack.exec.Promise;
  */
 public interface WebSiteService {
 
-
-
     Promise<WebSiteNode> findById(Long id) throws Exception;
+    
 }
