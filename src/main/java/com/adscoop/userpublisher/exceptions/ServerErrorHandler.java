@@ -10,5 +10,6 @@ public class ServerErrorHandler implements ratpack.error.ServerErrorHandler {
     @Override
     public void error(Context context, Throwable throwable) throws Exception {
         context.render(throwable.getMessage());
+        throwable.printStackTrace();
     }
 }
