@@ -12,4 +12,5 @@ public class ServerErrorHandler implements ratpack.error.ServerErrorHandler {
         context.render(throwable.getMessage());
         throwable.printStackTrace();
     }
+    
 }
