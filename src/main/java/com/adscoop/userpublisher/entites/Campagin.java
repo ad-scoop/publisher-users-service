@@ -1,6 +1,8 @@
 package com.adscoop.userpublisher.entites;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.neo4j.ogm.annotation.NodeEntity;
@@ -29,7 +31,7 @@ public class Campagin extends AbstratEntity {
 
 	@Relationship(type = "CAMPAGIN_HAS_BANNERS")
 	@JsonManagedReference
-	private Set<Banner> banners = new HashSet<>();
+	private List<Banner> banners = new ArrayList<>();
 
 	@Relationship(type = "RESERVED_WEBSITES")
 	@JsonManagedReference
@@ -47,11 +49,11 @@ public class Campagin extends AbstratEntity {
 		this.userNode = userNode;
 	}
 
-	public Set<Banner> getBanners() {
+	public List<Banner> getBanners() {
 		return banners;
 	}
 
-	public void setBanners(Set<Banner> banners) {
+	public void setBanners(List<Banner> banners) {
 		this.banners = banners;
 	}
 
