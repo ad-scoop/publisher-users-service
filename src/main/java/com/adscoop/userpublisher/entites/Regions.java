@@ -5,9 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import org.neo4j.ogm.annotations.Labels;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,11 +20,11 @@ public class Regions extends AbstratEntity {
     @Labels
     private List<String> labels = new ArrayList<>();
 
-    @Relationship(direction = Relationship.OUTGOING ,type = "REGION_BELONGS_TO_BANNER_SPACE")
+    @Relationship(type = "REGION_BELONGS_TO_BANNER_SPACE")
     private Set<BannerSpace>  bannerSpaces = new HashSet<>();
 
-    @Relationship(direction =  Relationship.OUTGOING, type = "REGION_BELONGS_TO_WEBSITE")
-    private Set<WebSiteNode>   webSiteNodes = new HashSet<>();
+    @Relationship(type = "REGION_BELONGS_TO_WEBSITE")
+    private Set<WebSite> webSiteNodes = new HashSet<>();
 
     public List<String> getLabels() {
         return labels;
@@ -44,11 +44,11 @@ public class Regions extends AbstratEntity {
     }
 
     @JsonIgnore
-    public Set<WebSiteNode> getWebSiteNodes() {
+    public Set<WebSite> getWebSiteNodes() {
         return webSiteNodes;
     }
 
-    public void setWebSiteNodes(Set<WebSiteNode> webSiteNodes) {
+    public void setWebSiteNodes(Set<WebSite> webSiteNodes) {
         this.webSiteNodes = webSiteNodes;
     }
 }

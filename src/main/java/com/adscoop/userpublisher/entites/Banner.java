@@ -1,18 +1,14 @@
 package com.adscoop.userpublisher.entites;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 
 /**
@@ -21,7 +17,7 @@ import java.util.Set;
 
 @NodeEntity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BannerNode extends AbstratEntity {
+public class Banner extends AbstratEntity {
 
 	private String positionSiteM;
 	private String positionSiteL;
@@ -29,19 +25,18 @@ public class BannerNode extends AbstratEntity {
 	private Integer width;
 	private Integer height;
 	private Integer clicks;
-	private String bannerSpaceToken;
 	private String picture;
 	private String counterUrl;
 
 	@Labels
 	private List<String> labels = new ArrayList<>();
 
-	@Relationship(type = "HAS_CATEGORIES")
-	private Set<Category> categories = new HashSet<>();
-
-	@Relationship(type = "HAS_TARGETGROUPS")
-	private Set<TargetGroups> targetGroupses = new HashSet<>();
-
+//	@Relationship(type = "HAS_CATEGORIES")
+//	private Set<Category> categories = new HashSet<>();
+//
+//	@Relationship(type = "HAS_TARGETGROUPS")
+//	private Set<TargetGroups> targetGroupses = new HashSet<>();
+//
 //	@Relationship(type = "HAS_FOOTPRINT")
 //	private Set<FootPrintInfo> footPrintInfo = new HashSet<>();
 
@@ -121,51 +116,10 @@ public class BannerNode extends AbstratEntity {
 		this.picture = picture;
 	}
 
-//	public Set<FootPrintInfo> getFootPrintInfo() {
-//		return footPrintInfo;
-//	}
-//
-//	public void setFootPrintInfo(FootPrintInfo footPrintInfo) {
-//		this.footPrintInfo.add(footPrintInfo);
-//	}
-
 	public void setLabel(String label) {
 		this.labels.add(label);
 	}
 
-//	public void addFootPrint(FootPrintInfo footPrintInformationNode) {
-//		footPrintInfo.add(footPrintInformationNode);
-//		footPrintInformationNode.setBannerNode(this);
-//	}
-
-	public void addCategory(Category category) {
-		categories.add(category);
-		category.getCatbannerNodes().add(this);
-	}
-
-	public String getBannerSpaceToken() {
-		return bannerSpaceToken;
-	}
-
-	public void setBannerSpaceToken(String bannerSpaceToken) {
-		this.bannerSpaceToken = bannerSpaceToken;
-	}
-
-	public Set<Category> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(Set<Category> categories) {
-		this.categories = categories;
-	}
-
-	public Set<TargetGroups> getTargetGroupses() {
-		return targetGroupses;
-	}
-
-	public void setTargetGroupses(Set<TargetGroups> targetGroupses) {
-		this.targetGroupses = targetGroupses;
-	}
 
 	public Campagin getCampagin() {
 		return campagin;
@@ -175,4 +129,45 @@ public class BannerNode extends AbstratEntity {
 		this.campagin = campagin;
 	}
 
+//	public Set<FootPrintInfo> getFootPrintInfo() {
+//		return footPrintInfo;
+//	}
+//
+//	public void setFootPrintInfo(FootPrintInfo footPrintInfo) {
+//		this.footPrintInfo.add(footPrintInfo);
+//	}
+
+//	public void addFootPrint(FootPrintInfo footPrintInformationNode) {
+//		footPrintInfo.add(footPrintInformationNode);
+//		footPrintInformationNode.setBannerNode(this);
+//	}
+
+//	public void addCategory(Category category) {
+//		categories.add(category);
+//		category.getCatbannerNodes().add(this);
+//	}
+//
+//	public String getBannerSpaceToken() {
+//		return bannerSpaceToken;
+//	}
+//
+//	public void setBannerSpaceToken(String bannerSpaceToken) {
+//		this.bannerSpaceToken = bannerSpaceToken;
+//	}
+//
+//	public Set<Category> getCategories() {
+//		return categories;
+//	}
+//
+//	public void setCategories(Set<Category> categories) {
+//		this.categories = categories;
+//	}
+//
+//	public Set<TargetGroups> getTargetGroupses() {
+//		return targetGroupses;
+//	}
+//
+//	public void setTargetGroupses(Set<TargetGroups> targetGroupses) {
+//		this.targetGroupses = targetGroupses;
+//	}
 }

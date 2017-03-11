@@ -1,7 +1,7 @@
 package com.adscoop.userpublisher.services;
 
 
-import com.adscoop.userpublisher.entites.BannerNode;
+import com.adscoop.userpublisher.entites.Banner;
 import com.google.inject.Inject;
 import org.neo4j.ogm.session.Session;
 
@@ -25,32 +25,32 @@ public class BannerNodeServiceImpl implements BannerNodeService {
     }
 
     @Override
-    public Optional<List<BannerNode>> getBannersByCampaginName(String campaginame) {
+    public Optional<List<Banner>> getBannersByCampaginName(String campaginame) {
         return null;
     }
 
     @Override
-    public Optional<List<BannerNode>> getBannerByUserToken(String token) {
+    public Optional<List<Banner>> getBannerByUserToken(String token) {
         return null;
     }
 
     @Override
-    public Optional<BannerNode> addBannerToCampagin(BannerNode bannerNode) {
+    public Optional<Banner> addBannerToCampagin(Banner bannerNode) {
         return null;
     }
 
     @Override
-    public boolean deleteBannerNode(BannerNode bannerNode) {
+    public boolean deleteBannerNode(Banner bannerNode) {
         return false;
     }
 
     @Override
-    public boolean updateBannerNode(BannerNode bannerNode) {
+    public boolean updateBannerNode(Banner bannerNode) {
         return false;
     }
 
     @Override
-    public boolean save(BannerNode bannerNode) {
+    public boolean save(Banner bannerNode) {
         return false;
     }
     

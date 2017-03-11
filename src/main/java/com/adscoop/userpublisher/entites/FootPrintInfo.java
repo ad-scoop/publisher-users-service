@@ -17,7 +17,7 @@ public class FootPrintInfo extends AbstratEntity {
 	private List<String> list = new ArrayList<>();
 
 	@Relationship(type = "BELONGS_TO_BANNER", direction = Relationship.INCOMING)
-	private BannerNode bannerNode;
+	private Banner bannerNode;
 
 	public List<String> getList() {
 		return list;
@@ -27,11 +27,11 @@ public class FootPrintInfo extends AbstratEntity {
 		this.list = list;
 	}
 
-	public BannerNode getBannerNode() {
+	public Banner getBannerNode() {
 		return bannerNode;
 	}
 
-	public void setBannerNode(BannerNode bannerNode) {
+	public void setBannerNode(Banner bannerNode) {
 		this.bannerNode = bannerNode;
 	}
 

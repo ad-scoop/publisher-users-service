@@ -6,11 +6,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import org.neo4j.ogm.annotations.Labels;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Created by thokle on 24/08/2016.
@@ -44,12 +45,14 @@ public class BannerSpace extends AbstratEntity {
 	private List<String> labels = new ArrayList<>();
 
 	@Relationship(type = "BELONGS_TO_WEBSITE", direction = Relationship.INCOMING)
-	private Set<WebSiteNode> webSiteNodeSet = new HashSet<>();
+	@JsonBackReference
+	private WebSite webSiteNode;
 
-	@Relationship(type = "BANNERSPACE_HAS_BANNERS", direction = Relationship.OUTGOING)
-	private Set<BannerNode> bannerNodesbannerSpaces = new HashSet<>();
+	@Relationship(type = "BANNERSPACE_HAS_BANNERS")
+	@JsonManagedReference
+	private Set<Banner> bannerNodesbannerSpaces = new HashSet<>();
 
-	@Relationship(type = "HAS_CATEGORIES", direction = Relationship.OUTGOING)
+	@Relationship(type = "HAS_CATEGORIES")
 	private Set<Category> categories = new HashSet<>();
 
 	public String getDomain() {
@@ -144,16 +147,15 @@ public class BannerSpace extends AbstratEntity {
 		this.userId = userId;
 	}
 
-	@JsonIgnore
-	public Set<WebSiteNode> getWebSiteNodeSet() {
-		return webSiteNodeSet;
+	public WebSite getWebSiteNode() {
+		return webSiteNode;
 	}
 
-	public void setWebSiteNodeSet(Set<WebSiteNode> webSiteNodeSet) {
-		this.webSiteNodeSet = webSiteNodeSet;
+	public void setWebSiteNodeSet(WebSite webSiteNode) {
+		this.webSiteNode = webSiteNode;
 	}
 
-	public Set<BannerNode> getBannerNodesbannerSpaces() {
+	public Set<Banner> getBannerNodesbannerSpaces() {
 		return bannerNodesbannerSpaces;
 	}
 
@@ -169,7 +171,7 @@ public class BannerSpace extends AbstratEntity {
 		this.reservedids = reservedids;
 	}
 
-	public void setBannerNodesbannerSpaces(Set<BannerNode> bannerNodesbannerSpaces) {
+	public void setBannerNodesbannerSpaces(Set<Banner> bannerNodesbannerSpaces) {
 		this.bannerNodesbannerSpaces = bannerNodesbannerSpaces;
 	}
 

@@ -5,9 +5,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import org.neo4j.ogm.annotations.Labels;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Created by thokle on 24/08/2016.
@@ -16,40 +18,19 @@ import org.neo4j.ogm.annotations.Labels;
 public class UserNode extends AbstratEntity {
 
 	private boolean isActivated;
-
 	private String firstname;
-
 	private String middlename;
-
 	private String lastname;
-
 	private String username;
-
 	private String email;
-
 	private String password;
-
 	private String token;
 
 	@Labels
 	private List<String> labels = new ArrayList<>();
 
-	@Relationship(type = "USER_HAS_CREDITINFO")
-	private Set<CreditInfo> creditInfos = new HashSet<>();
-
-	@Relationship(type = "USER_HAS_COMPANY")
-	private Set<Company> companyNodes = new HashSet<>();
-
-	@Relationship(type = "USER_HAS_ADDRESS")
-	private Set<AddressNode> addressNodes = new HashSet<>();
-
-	@Relationship(type = "HAS_ACCOUNT_INFORMATION")
-	private Set<AccountInformation> accountInformations = new HashSet<>();
-
-	@Relationship(type = "HAS_BANNER_NODES")
-	private Set<BannerNode> bannerNodes = new HashSet<>();
-
 	@Relationship(type = "CAMPAGIN_HAS_USER")
+	@JsonManagedReference
 	private Set<Campagin> campagins = new HashSet<>();
 
 	public Set<Campagin> getCampagins() {
@@ -108,32 +89,6 @@ public class UserNode extends AbstratEntity {
 		this.password = password;
 	}
 
-//	public Set<AddressNode> getAddressNodes() {
-//		return addressNodes;
-//	}
-//
-//	public void setAddressNodes(Set<AddressNode> addressNodes) {
-//		this.addressNodes = addressNodes;
-//	}
-//
-//	public Set<BannerNode> getBannerNodes() {
-//		return bannerNodes;
-//	}
-//
-//	public void setBannerNodes(Set<BannerNode> bannerNodes) {
-//		this.bannerNodes = bannerNodes;
-//	}
-//
-//	public void addCreditInfo(CreditInfo creditInfo) {
-//		this.creditInfos.add(creditInfo);
-//		creditInfo.getUserNodeSet().add(this);
-//	}
-//
-//	public void setAccountInformation(AccountInformation accountInformation) {
-//		this.accountInformations.add(accountInformation);
-//		accountInformation.getUserNodeSet().add(this);
-//	}
-//
 	public String getToken() {
 		return token;
 	}
@@ -162,46 +117,13 @@ public class UserNode extends AbstratEntity {
 		isActivated = activated;
 	}
 
-	public void setCompanyNode(Company companyNode) {
-		this.getCompanyNodes().add(companyNode);
-		companyNode.getUserNodes().add(this);
-	}
-
-	public Set<Company> getCompanyNodes() {
-		return companyNodes;
-	}
-
-	public void setCompanyNodes(Set<Company> companyNodes) {
-		this.companyNodes = companyNodes;
-	}
-
-	public Set<CreditInfo> getCreditInfos() {
-		return creditInfos;
-	}
-
-	public void setCreditInfos(Set<CreditInfo> creditInfos) {
-		this.creditInfos = creditInfos;
-	}
-
-	public Set<AccountInformation> getAccountInformations() {
-		return accountInformations;
-	}
-
-	public void setAccountInformations(Set<AccountInformation> accountInformations) {
-		this.accountInformations = accountInformations;
-	}
-
-	public void addAddress(AddressNode addressNode) {
-		addressNodes.add(addressNode);
-		addressNode.getUserNodes().add(this);
-	}
-
 	public void addCampagin(Campagin campagin) {
 		this.campagins.add(campagin);
+		campagin.setUserNode(this);
 	}
 
 	public void removeCampagin(String name) {
 		this.campagins.removeIf(campagin -> campagin.getName().equals(name));
 	}
-	
+
 }

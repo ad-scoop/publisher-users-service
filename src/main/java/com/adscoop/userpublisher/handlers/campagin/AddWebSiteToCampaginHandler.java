@@ -1,7 +1,7 @@
 package com.adscoop.userpublisher.handlers.campagin;
 
 import com.adscoop.userpublisher.entites.Campagin;
-import com.adscoop.userpublisher.entites.WebSiteNode;
+import com.adscoop.userpublisher.entites.WebSite;
 import com.adscoop.userpublisher.models.ReservedSites;
 import com.adscoop.userpublisher.services.CampaginService;
 import com.adscoop.userpublisher.services.WebSiteService;
@@ -37,7 +37,7 @@ public class AddWebSiteToCampaginHandler  implements Handler{
         String campagin_name= ctx.getAllPathTokens().get("campagin_name");
 
      ctx.parse(fromJson(ReservedSites.class)).then( reservedSites -> {
-         Promise<WebSiteNode> webSiteNodePromise = webSiteService.findById(reservedSites.getWebsiteid());
+         Promise<WebSite> webSiteNodePromise = webSiteService.findById(reservedSites.getWebsiteid());
 
          webSiteNodePromise.then( webSiteNode -> {
           Promise<Campagin> campaginPromise =    campaginService.findCampaginsByUserTokenAndName(campagin_name,token);

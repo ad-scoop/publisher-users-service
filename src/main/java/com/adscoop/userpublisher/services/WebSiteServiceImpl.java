@@ -1,6 +1,6 @@
 package com.adscoop.userpublisher.services;
 
-import com.adscoop.userpublisher.entites.WebSiteNode;
+import com.adscoop.userpublisher.entites.WebSite;
 import com.google.inject.Inject;
 import org.neo4j.ogm.session.Session;
 import ratpack.exec.Promise;
@@ -20,8 +20,8 @@ public class WebSiteServiceImpl implements WebSiteService {
 	}
 
 	@Override
-	public Promise<WebSiteNode> findById(Long id) {
-		return Promise.value(session.queryForObject(WebSiteNode.class,
+	public Promise<WebSite> findById(Long id) {
+		return Promise.value(session.queryForObject(WebSite.class,
 				"match (b:WebiteNode) where ID(b)=" + id + " return b", Collections.emptyMap()));
 	}
 

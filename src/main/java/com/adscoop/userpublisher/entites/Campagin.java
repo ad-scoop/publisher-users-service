@@ -8,6 +8,7 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  * Created by thokle on 12/02/2017.
@@ -27,10 +28,12 @@ public class Campagin extends AbstratEntity {
 	private UserNode userNode;
 
 	@Relationship(type = "CAMPAGIN_HAS_BANNERS")
-	private Set<BannerNode> banners = new HashSet<>();
+	@JsonManagedReference
+	private Set<Banner> banners = new HashSet<>();
 
 	@Relationship(type = "RESERVED_WEBSITES")
-	private Set<WebSiteNode> webSiteNodes = new HashSet<>();
+	@JsonManagedReference
+	private Set<WebSite> webSites = new HashSet<>();
 
 	public void setName(String name) {
 		this.name = name;
@@ -44,22 +47,22 @@ public class Campagin extends AbstratEntity {
 		this.userNode = userNode;
 	}
 
-	public Set<BannerNode> getBanners() {
+	public Set<Banner> getBanners() {
 		return banners;
 	}
 
-	public void setBanners(Set<BannerNode> banners) {
+	public void setBanners(Set<Banner> banners) {
 		this.banners = banners;
 	}
 
-	public void addBanner(BannerNode bannerNode) {
+	public void addBanner(Banner bannerNode) {
 		banners.add(bannerNode);
 		bannerNode.setCampagin(this);
 	}
 
-	public void addReservedWebSite(WebSiteNode webSiteNode) {
-		webSiteNodes.add(webSiteNode);
-		webSiteNode.setCampagin(this);
+	public void addReservedWebSite(WebSite webSite) {
+		webSites.add(webSite);
+		webSite.setCampagin(this);
 	}
 
 	public double getMaxPricePrDay() {
@@ -86,12 +89,12 @@ public class Campagin extends AbstratEntity {
 		this.endDate = endDate;
 	}
 
-	public Set<WebSiteNode> getWebSiteNodes() {
-		return webSiteNodes;
+	public Set<WebSite> getWebSites() {
+		return webSites;
 	}
 
-	public void setWebSiteNodes(Set<WebSiteNode> webSiteNodes) {
-		this.webSiteNodes = webSiteNodes;
+	public void setWebSites(Set<WebSite> webSites) {
+		this.webSites = webSites;
 	}
 
 	public String getName() {

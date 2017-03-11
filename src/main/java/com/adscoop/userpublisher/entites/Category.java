@@ -5,10 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
-import org.neo4j.ogm.annotations.Labels;
-
 
 /**
  * Created by thokle on 24/08/2016.
@@ -16,63 +15,60 @@ import org.neo4j.ogm.annotations.Labels;
 @NodeEntity(label = "Category")
 public class Category extends AbstratEntity {
 
+	@Labels
+	private List<String> labels = new ArrayList<>();
 
-    @Labels
-    private List<String> labels = new ArrayList<>();
+	@Relationship(type = "BELONGS_TO_BANNER", direction = Relationship.INCOMING)
+	private Set<Banner> catbannerNodes = new HashSet<>();
 
+	@Relationship(type = "BELONGS_TO_BANNERSPACE", direction = Relationship.INCOMING)
+	private Set<BannerSpace> catBannerSpaces = new HashSet<>();
 
-    @Relationship(type = "BELONGS_TO_BANNER",direction = Relationship.INCOMING)
-    private Set<BannerNode> catbannerNodes = new HashSet<>();
+	private String name;
+	private String value;
 
-   @Relationship(type = "BELONGS_TO_BANNERSPACE",direction = Relationship.INCOMING)
-   private Set<BannerSpace> catBannerSpaces = new HashSet<>();
+	public List<String> getLabels() {
+		return labels;
+	}
 
-    private String name;
-    private String value;
+	public void setLabels(List<String> labels) {
+		this.labels = labels;
+	}
 
+	public String getName() {
+		return name;
+	}
 
-    public List<String> getLabels() {
-        return labels;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setLabels(List<String> labels) {
-        this.labels = labels;
-    }
+	public String getValue() {
+		return value;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setLabel(String s) {
+		this.labels.add(s);
+	}
 
-    public String getValue() {
-        return value;
-    }
+	public Set<Banner> getCatbannerNodes() {
+		return catbannerNodes;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setCatbannerNodes(Set<Banner> catbannerNodes) {
+		this.catbannerNodes = catbannerNodes;
+	}
 
-    public void setLabel(String s){
-        this.labels.add(s);
-    }
+	public Set<BannerSpace> getBannerSpaces() {
+		return catBannerSpaces;
+	}
 
-
-    public Set<BannerNode> getCatbannerNodes() {
-        return catbannerNodes;
-    }
-
-    public void setCatbannerNodes(Set<BannerNode> catbannerNodes) {
-        this.catbannerNodes = catbannerNodes;
-    }
-
-    public Set<BannerSpace> getBannerSpaces() {
-        return catBannerSpaces;
-    }
-
-    public void setBannerSpaces(Set<BannerSpace> bannerSpaces) {
-        this.catBannerSpaces = bannerSpaces;
-    }
+	public void setBannerSpaces(Set<BannerSpace> bannerSpaces) {
+		this.catBannerSpaces = bannerSpaces;
+	}
+	
 }

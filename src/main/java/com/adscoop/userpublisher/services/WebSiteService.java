@@ -1,6 +1,6 @@
 package com.adscoop.userpublisher.services;
 
-import com.adscoop.userpublisher.entites.WebSiteNode;
+import com.adscoop.userpublisher.entites.WebSite;
 import ratpack.exec.Promise;
 
 /**
@@ -8,6 +8,6 @@ import ratpack.exec.Promise;
  */
 public interface WebSiteService {
 
-    Promise<WebSiteNode> findById(Long id) throws Exception;
+    Promise<WebSite> findById(Long id) throws Exception;
     
 }

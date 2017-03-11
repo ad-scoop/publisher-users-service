@@ -3,7 +3,7 @@ package com.adscoop.userpublisher.services;
 
 
 
-import com.adscoop.userpublisher.entites.BannerNode;
+import com.adscoop.userpublisher.entites.Banner;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,19 +17,19 @@ public interface BannerNodeService {
 
 
 
-    Optional<List<BannerNode>> getBannersByCampaginName(String campaginame);
+    Optional<List<Banner>> getBannersByCampaginName(String campaginame);
 
-    Optional<List<BannerNode>> getBannerByUserToken(String token);
+    Optional<List<Banner>> getBannerByUserToken(String token);
 
 
 
-    Optional<BannerNode> addBannerToCampagin(BannerNode bannerNode);
+    Optional<Banner> addBannerToCampagin(Banner bannerNode);
 
-    boolean deleteBannerNode(BannerNode bannerNode);
+    boolean deleteBannerNode(Banner bannerNode);
 
-    boolean updateBannerNode(BannerNode bannerNode);
+    boolean updateBannerNode(Banner bannerNode);
 
-    boolean save(BannerNode bannerNode);
+    boolean save(Banner bannerNode);
 
 
 

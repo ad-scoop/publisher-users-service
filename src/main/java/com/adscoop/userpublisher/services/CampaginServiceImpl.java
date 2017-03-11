@@ -2,9 +2,11 @@ package com.adscoop.userpublisher.services;
 
 import java.util.Collections;
 
+import org.neo4j.ogm.cypher.Filter;
 import org.neo4j.ogm.session.Session;
 
 import com.adscoop.userpublisher.entites.Campagin;
+import com.adscoop.userpublisher.entites.UserNode;
 import com.google.inject.Inject;
 
 import ratpack.exec.Promise;
@@ -23,9 +25,7 @@ public class CampaginServiceImpl implements CampaginService {
 
 	@Override
 	public Promise<Iterable<Campagin>> findCampaingsByUser(String token) {
-		return Promise.value(session.query(Campagin.class,
-				"match (u:UserNode)-[:CAMPAGIN_HAS_USER]->(c:Campagin) where u.token='" + token + "' return c",
-				Collections.emptyMap()));
+		return Promise.value(session.loadAll(UserNode.class, new Filter("token", token), -1).iterator().next().getCampagins());
 	}
 
 	public Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) {
@@ -37,17 +37,13 @@ public class CampaginServiceImpl implements CampaginService {
 	@Override
 	public void deleteCampagin(Long id) {
 		session.delete(session.load(Campagin.class, id));
+		session.clear();
 	}
 
 	@Override
 	public void updateCampagin(Campagin campagin) {
-		session.clear();
-		campagin.getBanners().stream()
-			.forEach(banner -> { 
-				banner.setCampagin(campagin); 
-				session.save(banner	);
-			});
 		session.save(campagin);
+		session.clear();
 	}
 	
 }
