@@ -4,16 +4,20 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Created by thokle on 18/10/2016.
  */
 @NodeEntity
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WebSite extends AbstratEntity {
 
 	private int port;
-	private String hostname;
-	private String path;
+	private String url;
+	private String name;
+	private String industry;
+	private String zip;
 
 	@Relationship(type = "WEBSITE_REGIONS", direction = Relationship.INCOMING)
 	@JsonBackReference
@@ -27,20 +31,20 @@ public class WebSite extends AbstratEntity {
 		this.port = port;
 	}
 
-	public String getHostname() {
-		return hostname;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setHostname(String hostname) {
-		this.hostname = hostname;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
-	public String getPath() {
-		return path;
+	public String getName() {
+		return name;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Campagin getCampagin() {
@@ -49,6 +53,22 @@ public class WebSite extends AbstratEntity {
 
 	public void setCampagin(Campagin campagin) {
 		this.campagin = campagin;
+	}
+
+	public String getIndustry() {
+		return industry;
+	}
+
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+
+	public String getZip() {
+		return zip;
+	}
+
+	public void setZip(String zip) {
+		this.zip = zip;
 	}
 
 }

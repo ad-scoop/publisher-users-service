@@ -35,7 +35,7 @@ public class Campagin extends AbstratEntity {
 
 	@Relationship(type = "RESERVED_WEBSITES")
 	@JsonManagedReference
-	private Set<WebSite> webSites = new HashSet<>();
+	private List<WebSite> webSites = new ArrayList<>();
 
 	public void setName(String name) {
 		this.name = name;
@@ -91,11 +91,11 @@ public class Campagin extends AbstratEntity {
 		this.endDate = endDate;
 	}
 
-	public Set<WebSite> getWebSites() {
+	public List<WebSite> getWebSites() {
 		return webSites;
 	}
 
-	public void setWebSites(Set<WebSite> webSites) {
+	public void setWebSites(List<WebSite> webSites) {
 		this.webSites = webSites;
 	}
 
