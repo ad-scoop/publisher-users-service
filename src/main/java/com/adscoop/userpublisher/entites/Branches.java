@@ -14,7 +14,7 @@ import org.neo4j.ogm.annotations.Labels;
  * Created by thokle on 01/10/2016.
  */
 @NodeEntity
-public class Branches extends Entity {
+public class Branches extends AbstratEntity {
 
     private  String name;
 

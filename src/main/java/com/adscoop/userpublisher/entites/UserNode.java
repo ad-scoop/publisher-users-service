@@ -13,7 +13,7 @@ import org.neo4j.ogm.annotations.Labels;
  * Created by thokle on 24/08/2016.
  */
 @NodeEntity
-public class UserNode extends Entity {
+public class UserNode extends AbstratEntity {
 
 	private boolean isActivated;
 
@@ -34,22 +34,22 @@ public class UserNode extends Entity {
 	@Labels
 	private List<String> labels = new ArrayList<>();
 
-	@Relationship(direction = Relationship.OUTGOING, type = "USER_HAS_CREDITINFO")
+	@Relationship(type = "USER_HAS_CREDITINFO")
 	private Set<CreditInfo> creditInfos = new HashSet<>();
 
-	@Relationship(direction = Relationship.OUTGOING, type = "USER_HAS_COMPANY")
+	@Relationship(type = "USER_HAS_COMPANY")
 	private Set<Company> companyNodes = new HashSet<>();
 
-	@Relationship(direction = Relationship.OUTGOING, type = "USER_HAS_ADDRESS")
+	@Relationship(type = "USER_HAS_ADDRESS")
 	private Set<AddressNode> addressNodes = new HashSet<>();
 
-	@Relationship(direction = Relationship.OUTGOING, type = "HAS_ACCOUNT_INFORMATION")
+	@Relationship(type = "HAS_ACCOUNT_INFORMATION")
 	private Set<AccountInformation> accountInformations = new HashSet<>();
 
-	@Relationship(direction = Relationship.OUTGOING, type = "HAS_BANNER_NODES")
+	@Relationship(type = "HAS_BANNER_NODES")
 	private Set<BannerNode> bannerNodes = new HashSet<>();
 
-	@Relationship(direction = Relationship.OUTGOING, type = "CAMPAGIN_HAS_USER")
+	@Relationship(type = "CAMPAGIN_HAS_USER")
 	private Set<Campagin> campagins = new HashSet<>();
 
 	public Set<Campagin> getCampagins() {
@@ -108,32 +108,32 @@ public class UserNode extends Entity {
 		this.password = password;
 	}
 
-	public Set<AddressNode> getAddressNodes() {
-		return addressNodes;
-	}
-
-	public void setAddressNodes(Set<AddressNode> addressNodes) {
-		this.addressNodes = addressNodes;
-	}
-
-	public Set<BannerNode> getBannerNodes() {
-		return bannerNodes;
-	}
-
-	public void setBannerNodes(Set<BannerNode> bannerNodes) {
-		this.bannerNodes = bannerNodes;
-	}
-
-	public void addCreditInfo(CreditInfo creditInfo) {
-		this.creditInfos.add(creditInfo);
-		creditInfo.getUserNodeSet().add(this);
-	}
-
-	public void setAccountInformation(AccountInformation accountInformation) {
-		this.accountInformations.add(accountInformation);
-		accountInformation.getUserNodeSet().add(this);
-	}
-
+//	public Set<AddressNode> getAddressNodes() {
+//		return addressNodes;
+//	}
+//
+//	public void setAddressNodes(Set<AddressNode> addressNodes) {
+//		this.addressNodes = addressNodes;
+//	}
+//
+//	public Set<BannerNode> getBannerNodes() {
+//		return bannerNodes;
+//	}
+//
+//	public void setBannerNodes(Set<BannerNode> bannerNodes) {
+//		this.bannerNodes = bannerNodes;
+//	}
+//
+//	public void addCreditInfo(CreditInfo creditInfo) {
+//		this.creditInfos.add(creditInfo);
+//		creditInfo.getUserNodeSet().add(this);
+//	}
+//
+//	public void setAccountInformation(AccountInformation accountInformation) {
+//		this.accountInformations.add(accountInformation);
+//		accountInformation.getUserNodeSet().add(this);
+//	}
+//
 	public String getToken() {
 		return token;
 	}
@@ -198,6 +198,10 @@ public class UserNode extends Entity {
 
 	public void addCampagin(Campagin campagin) {
 		this.campagins.add(campagin);
+	}
+
+	public void removeCampagin(String name) {
+		this.campagins.removeIf(campagin -> campagin.getName().equals(name));
 	}
 	
 }

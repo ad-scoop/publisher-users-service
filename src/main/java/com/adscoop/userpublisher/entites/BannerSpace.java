@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * Created by thokle on 24/08/2016.
  */
 @NodeEntity
-public class BannerSpace extends Entity {
+public class BannerSpace extends AbstratEntity {
 
 	private String userId;
 

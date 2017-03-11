@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * Created by thokle on 25/08/2016.
  */
-public class TargetGroups extends Entity {
+public class TargetGroups extends AbstratEntity {
 
 
     private String gender;

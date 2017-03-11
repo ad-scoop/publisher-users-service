@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * Created by thokle on 01/10/2016.
  */
 @NodeEntity
-public class Company  extends Entity {
+public class Company  extends AbstratEntity {
 
 
 

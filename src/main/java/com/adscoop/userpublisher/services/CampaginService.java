@@ -20,7 +20,7 @@ public interface CampaginService {
     Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
     void updateCampagin(Campagin campagin) throws Exception;
 
-    void deleteCampagin(Campagin campagin);
+    void deleteCampagin(Long id);
 
 
 

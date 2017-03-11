@@ -1,5 +1,6 @@
 package com.adscoop.userpublisher.entites;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,7 +21,7 @@ import java.util.Set;
 
 @NodeEntity
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class BannerNode extends Entity {
+public class BannerNode extends AbstratEntity {
 
 	private String positionSiteM;
 	private String positionSiteL;
@@ -35,18 +36,18 @@ public class BannerNode extends Entity {
 	@Labels
 	private List<String> labels = new ArrayList<>();
 
-	@Relationship(type = "HAS_CATEGORIES", direction = Relationship.OUTGOING)
+	@Relationship(type = "HAS_CATEGORIES")
 	private Set<Category> categories = new HashSet<>();
 
-	@Relationship(type = "HAS_TARGETGROUPS", direction = Relationship.OUTGOING)
+	@Relationship(type = "HAS_TARGETGROUPS")
 	private Set<TargetGroups> targetGroupses = new HashSet<>();
 
-	@Relationship(type = "HAS_FOOTPRINT", direction = Relationship.OUTGOING)
-	private Set<FootPrintInformationNode> footPrintInformationNodes = new HashSet<>();
+//	@Relationship(type = "HAS_FOOTPRINT")
+//	private Set<FootPrintInfo> footPrintInfo = new HashSet<>();
 
-	@JsonIgnore
 	@Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_BANNERS")
-	private Set<Campagin> nodes = new HashSet<>();
+	@JsonBackReference
+	private Campagin campagin;
 
 	public String getPositionSiteM() {
 		return positionSiteM;
@@ -120,22 +121,22 @@ public class BannerNode extends Entity {
 		this.picture = picture;
 	}
 
-	public Set<FootPrintInformationNode> getFootPrintInformationNodes() {
-		return footPrintInformationNodes;
-	}
-
-	public void setFootPrintInformationNodes(FootPrintInformationNode footPrintInformationNodes) {
-		this.footPrintInformationNodes.add(footPrintInformationNodes);
-	}
+//	public Set<FootPrintInfo> getFootPrintInfo() {
+//		return footPrintInfo;
+//	}
+//
+//	public void setFootPrintInfo(FootPrintInfo footPrintInfo) {
+//		this.footPrintInfo.add(footPrintInfo);
+//	}
 
 	public void setLabel(String label) {
 		this.labels.add(label);
 	}
 
-	public void addFootPrint(FootPrintInformationNode footPrintInformationNode) {
-		footPrintInformationNodes.add(footPrintInformationNode);
-		footPrintInformationNode.getBannerNodeSet().add(this);
-	}
+//	public void addFootPrint(FootPrintInfo footPrintInformationNode) {
+//		footPrintInfo.add(footPrintInformationNode);
+//		footPrintInformationNode.setBannerNode(this);
+//	}
 
 	public void addCategory(Category category) {
 		categories.add(category);
@@ -166,12 +167,12 @@ public class BannerNode extends Entity {
 		this.targetGroupses = targetGroupses;
 	}
 
-	public Set<Campagin> getNodes() {
-		return nodes;
+	public Campagin getCampagin() {
+		return campagin;
 	}
 
-	public void setNodes(Set<Campagin> nodes) {
-		this.nodes = nodes;
+	public void setCampagin(Campagin campagin) {
+		this.campagin = campagin;
 	}
 
 }

@@ -1,12 +1,13 @@
 package com.adscoop.userpublisher.services;
 
-import com.google.inject.Inject;
-import com.adscoop.userpublisher.entites.Campagin;
-import org.neo4j.ogm.session.Session;
-import ratpack.exec.Promise;
-
 import java.util.Collections;
-import java.util.Optional;
+
+import org.neo4j.ogm.session.Session;
+
+import com.adscoop.userpublisher.entites.Campagin;
+import com.google.inject.Inject;
+
+import ratpack.exec.Promise;
 
 /**
  * Created by thokle on 27/01/2017.
@@ -34,14 +35,18 @@ public class CampaginServiceImpl implements CampaginService {
 	}
 
 	@Override
-	public void deleteCampagin(Campagin campagin) {
-		if (session.detachNodeEntity(campagin.getId())) {
-			session.delete(campagin);
-		}
+	public void deleteCampagin(Long id) {
+		session.delete(session.load(Campagin.class, id));
 	}
 
 	@Override
 	public void updateCampagin(Campagin campagin) {
+		session.clear();
+		campagin.getBanners().stream()
+			.forEach(banner -> { 
+				banner.setCampagin(campagin); 
+				session.save(banner	);
+			});
 		session.save(campagin);
 	}
 	

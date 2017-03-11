@@ -14,19 +14,24 @@ import ratpack.handling.Handler;
 public class UpdateCampaginHandler implements Handler {
 
 	private ExtractUser extractUser;
+	private UserSevice userSevice;
 	private CampaginService campaginService;
 
 	@Inject
 	public UpdateCampaginHandler(UserSevice userSevice, CampaginService campaginService) {
+		this.userSevice = userSevice;
 		this.campaginService = campaginService;
 		this.extractUser = new ExtractUser(userSevice);
 	}
 
 	@Override
 	public void handle(Context ctx) throws Exception {
-		this.extractUser.handle(ctx, (user) -> {
+		this.extractUser.handle(ctx, user -> {
 			ctx.parse(fromJson(Campagin.class)).then(campagin -> {
+				campagin.setUserNode(user);
 				campaginService.updateCampagin(campagin);
+				user.getCampagins().add(campagin);
+				userSevice.saveOrUpate(user);
 				ctx.render(json("update ok"));
 			});
 		}); 

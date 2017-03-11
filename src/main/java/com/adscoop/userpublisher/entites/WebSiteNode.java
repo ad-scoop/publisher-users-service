@@ -13,104 +13,99 @@ import java.util.Set;
  * Created by thokle on 18/10/2016.
  */
 @NodeEntity
-public class WebSiteNode extends Entity {
+public class WebSiteNode extends AbstratEntity {
 
+	private int port;
+	private String hostname;
+	private String path;
 
-    private int port;
-    private String hostname;
-    private String path;
+	@Relationship(type = "WEBSITE_HAS_BANNERSPACE")
+	private Set<BannerSpace> bannerSpaceSet = new HashSet<>();
 
-    @Relationship(type = "WEBSITE_HAS_BANNERSPACE", direction = Relationship.OUTGOING)
-    private Set<BannerSpace> bannerSpaceSet = new HashSet<>();
+	@Relationship(type = "USER_HAS_WEBSITE ", direction = Relationship.INCOMING)
+	private Set<UserNode> userNodes = new HashSet<>();
 
+	@Relationship(type = "WEBSITE_TARGETGROUPT")
+	private Set<TargetGroups> targetGroupss = new HashSet<>();
 
-    @Relationship(type = "USER_HAS_WEBSITE ", direction = Relationship.INCOMING)
-    private Set<UserNode> userNodes = new HashSet<>();
+	@Relationship(type = "WEBSITE_REGIONS")
+	private Set<Regions> regionss = new HashSet<>();
 
+	@Relationship(type = "WEBSITE_REGIONS", direction = Relationship.INCOMING)
+	private Campagin campagin;
 
-    @Relationship(type = "WEBSITE_TARGETGROUPT", direction = Relationship.OUTGOING)
-    private Set<TargetGroups> targetGroupss = new HashSet<>();
+	private List<Company> companies = new ArrayList<>();
 
+	public List<Company> getCompanies() {
+		return companies;
+	}
 
-    @Relationship(type = "WEBSITE_REGIONS", direction = Relationship.OUTGOING)
-    private Set<Regions> regionss = new HashSet<>();
+	public void setCompanies(List<Company> companies) {
+		this.companies = companies;
+	}
 
-    private List<Campagin> campaginList = new ArrayList<>();
-    private List<Company>  companies = new ArrayList<>();
+	public int getPort() {
+		return port;
+	}
 
+	public void setPort(int port) {
+		this.port = port;
+	}
 
-    @JsonIgnore
-    public List<Company> getCompanies() {
-        return companies;
-    }
+	public String getHostname() {
+		return hostname;
+	}
 
-    public void setCompanies(List<Company> companies) {
-        this.companies = companies;
-    }
+	public void setHostname(String hostname) {
+		this.hostname = hostname;
+	}
 
-    public int getPort() {
-        return port;
-    }
+	public String getPath() {
+		return path;
+	}
 
-    public void setPort(int port) {
-        this.port = port;
-    }
+	public void setPath(String path) {
+		this.path = path;
+	}
 
-    public String getHostname() {
-        return hostname;
-    }
+	public Set<BannerSpace> getBannerSpaceSet() {
+		return bannerSpaceSet;
+	}
 
-    public void setHostname(String hostname) {
-        this.hostname = hostname;
-    }
+	public void setBannerSpaceSet(Set<BannerSpace> bannerSpaceSet) {
+		this.bannerSpaceSet = bannerSpaceSet;
+	}
 
-    public String getPath() {
-        return path;
-    }
+	@JsonIgnore
+	public Set<UserNode> getUserNodes() {
+		return userNodes;
+	}
 
-    public void setPath(String path) {
-        this.path = path;
-    }
+	public void setUserNodes(Set<UserNode> userNodes) {
+		this.userNodes = userNodes;
+	}
 
-    public Set<BannerSpace> getBannerSpaceSet() {
-        return bannerSpaceSet;
-    }
+	public void addBannerSpace(BannerSpace bannerSpace) {
+		bannerSpaceSet.add(bannerSpace);
+		bannerSpace.getWebSiteNodeSet().add(this);
+	}
 
-    public void setBannerSpaceSet(Set<BannerSpace> bannerSpaceSet) {
-        this.bannerSpaceSet = bannerSpaceSet;
-    }
+	public Campagin getCampagin() {
+		return campagin;
+	}
 
-    @JsonIgnore
-    public Set<UserNode> getUserNodes() {
-        return userNodes;
-    }
+	public void setCampagin(Campagin campagin) {
+		this.campagin = campagin;
+	}
 
-    public void setUserNodes(Set<UserNode> userNodes) {
-        this.userNodes = userNodes;
-    }
+	public void addTargetGroup(TargetGroups targetGroups) {
+		targetGroupss.add(targetGroups);
+		targetGroups.getWebsiteNodes().add(this);
+	}
 
-    public void addBannerSpace(BannerSpace bannerSpace) {
-        bannerSpaceSet.add(bannerSpace);
-        bannerSpace.getWebSiteNodeSet().add(this);
-    }
+	public void addRegion(Regions regions) {
+		regionss.add(regions);
+		regions.getWebSiteNodes().add(this);
 
-    @JsonIgnore
-    public List<Campagin> getCampaginList() {
-        return campaginList;
-    }
-
-    public void setCampaginList(List<Campagin> campaginList) {
-        this.campaginList = campaginList;
-    }
-
-    public void addTargetGroup(TargetGroups targetGroups) {
-        targetGroupss.add(targetGroups);
-        targetGroups.getWebsiteNodes().add(this);
-    }
-
-    public void addRegion(Regions regions) {
-        regionss.add(regions);
-        regions.getWebSiteNodes().add(this);
-
-    }
+	}
 }

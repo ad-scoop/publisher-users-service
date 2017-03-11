@@ -14,7 +14,7 @@ import org.neo4j.ogm.annotations.Labels;
  * Created by thokle on 24/08/2016.
  */
 @NodeEntity(label = "Category")
-public class Category extends Entity {
+public class Category extends AbstratEntity {
 
 
     @Labels

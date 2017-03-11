@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * Created by thokle on 25/08/2016.
  */
 @NodeEntity
-public class Regions extends Entity {
+public class Regions extends AbstratEntity {
 
     @Labels
     private List<String> labels = new ArrayList<>();

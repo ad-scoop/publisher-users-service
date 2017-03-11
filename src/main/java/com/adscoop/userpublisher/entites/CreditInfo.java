@@ -15,7 +15,7 @@ import org.neo4j.ogm.annotations.Labels;
  */
 
 @NodeEntity
-public class CreditInfo  extends Entity {
+public class CreditInfo  extends AbstratEntity {
 
 
     @Relationship(type = "USER_HAS_CREDITINFO",  direction = Relationship.INCOMING)
