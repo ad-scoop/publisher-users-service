@@ -1,13 +1,13 @@
 package com.adscoop.userpublisher.handlers.campagin;
 
+import static ratpack.jackson.Jackson.json;
+
 import com.adscoop.userpublisher.services.CampaginService;
 import com.google.inject.Inject;
+
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 import ratpack.rx.RxRatpack;
-
-import static ratpack.jackson.Jackson.fromJson;
-import static ratpack.jackson.Jackson.json;
 
 /**
  * Created by thokle on 28/02/2017.

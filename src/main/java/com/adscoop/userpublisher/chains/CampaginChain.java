@@ -1,16 +1,11 @@
 package com.adscoop.userpublisher.chains;
 
-import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.handlers.bannerspace.GetReservedBannserSpacesHandler;
 import com.adscoop.userpublisher.handlers.campagin.AddWebSiteToCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.CreateCampaginHandler;
-
-import com.adscoop.userpublisher.handlers.campagin.GetCampaginHandler;
-
 import com.adscoop.userpublisher.handlers.campagin.DeleteCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.GetCampaginHandler;
 import com.adscoop.userpublisher.handlers.campagin.UpdateCampaginHandler;
-
 
 import ratpack.func.Action;
 import ratpack.handling.Chain;

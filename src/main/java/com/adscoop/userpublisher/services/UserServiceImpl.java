@@ -1,11 +1,12 @@
 package com.adscoop.userpublisher.services;
 
-import com.adscoop.userpublisher.entites.UserNode;
-import com.google.inject.Inject;
-import org.neo4j.ogm.session.Session;
-
 import java.util.Collections;
 import java.util.Optional;
+
+import org.neo4j.ogm.session.Session;
+
+import com.adscoop.userpublisher.entites.UserNode;
+import com.google.inject.Inject;
 
 /**
  * Created by kleistit on 13/02/2017.

@@ -1,10 +1,9 @@
 package com.adscoop.userpublisher.services;
 
 
-import com.adscoop.userpublisher.entites.UserNode;
-
-
 import java.util.Optional;
+
+import com.adscoop.userpublisher.entites.UserNode;
 
 
 /**

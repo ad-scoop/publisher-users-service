@@ -1,7 +1,7 @@
 package com.adscoop.userpublisher.chains;
 
-import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.handlers.banners.AddBannerToCampaginHandler;
+
 import ratpack.func.Action;
 import ratpack.handling.Chain;
 

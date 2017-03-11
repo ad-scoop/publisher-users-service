@@ -6,10 +6,9 @@ import java.util.Optional;
 
 import com.adscoop.userpublisher.entites.UserNode;
 import com.adscoop.userpublisher.services.UserSevice;
-
 import com.google.inject.Inject;
+
 import ratpack.handling.Context;
-import ratpack.registry.Registry;
 
 public class ExtractUser {
 

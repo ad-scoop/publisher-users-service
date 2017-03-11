@@ -1,13 +1,13 @@
 package com.adscoop.userpublisher.services;
 
 
-import com.adscoop.userpublisher.entites.Banner;
-import com.google.inject.Inject;
-import org.neo4j.ogm.session.Session;
-
-
 import java.util.List;
 import java.util.Optional;
+
+import org.neo4j.ogm.session.Session;
+
+import com.adscoop.userpublisher.entites.Banner;
+import com.google.inject.Inject;
 
 
 
@@ -17,7 +17,6 @@ import java.util.Optional;
 public class BannerNodeServiceImpl implements BannerNodeService {
 
     private Session session;
-
 
     @Inject
     public BannerNodeServiceImpl(Session session) {

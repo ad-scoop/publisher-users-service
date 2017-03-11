@@ -1,11 +1,13 @@
 package com.adscoop.userpublisher.services;
 
+import java.util.Collections;
+
+import org.neo4j.ogm.session.Session;
+
 import com.adscoop.userpublisher.entites.WebSite;
 import com.google.inject.Inject;
-import org.neo4j.ogm.session.Session;
-import ratpack.exec.Promise;
 
-import java.util.Collections;
+import ratpack.exec.Promise;
 
 /**
  * Created by thokle on 04/03/2017.

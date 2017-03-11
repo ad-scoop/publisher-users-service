@@ -1,8 +1,8 @@
 package com.adscoop.userpublisher.services;
 
-import com.adscoop.userpublisher.entites.BannerSpace;
-
 import java.util.Optional;
+
+import com.adscoop.userpublisher.entites.BannerSpace;
 
 /**
  * Created by thokle on 19/02/2017.

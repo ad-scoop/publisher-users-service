@@ -1,16 +1,16 @@
 package com.adscoop.userpublisher.handlers.bannerspace;
 
-import com.adscoop.userpublisher.entites.BannerSpace;
-import com.adscoop.userpublisher.services.BannerSpaceService;
-import com.google.inject.Inject;
-import ratpack.handling.Context;
-import ratpack.handling.Handler;
+import static ratpack.jackson.Jackson.json;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static ratpack.jackson.Jackson.json;
+import com.adscoop.userpublisher.entites.BannerSpace;
+import com.adscoop.userpublisher.services.BannerSpaceService;
+import com.google.inject.Inject;
+
+import ratpack.handling.Context;
+import ratpack.handling.Handler;
 
 /**
  * Created by thokle on 19/02/2017.

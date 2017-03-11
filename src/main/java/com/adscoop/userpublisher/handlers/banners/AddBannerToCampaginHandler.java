@@ -1,17 +1,16 @@
 package com.adscoop.userpublisher.handlers.banners;
 
+import static ratpack.jackson.Jackson.fromJson;
+import static ratpack.jackson.Jackson.json;
+
 import com.adscoop.userpublisher.entites.Banner;
 import com.adscoop.userpublisher.entites.Campagin;
 import com.adscoop.userpublisher.services.CampaginService;
 import com.google.inject.Inject;
+
 import ratpack.exec.Promise;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
-
-import java.util.Optional;
-
-import static ratpack.jackson.Jackson.fromJson;
-import static ratpack.jackson.Jackson.json;
 
 /**
  * Created by kleistit on 13/02/2017.

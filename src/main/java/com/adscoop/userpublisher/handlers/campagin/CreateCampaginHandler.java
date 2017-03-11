@@ -3,7 +3,6 @@ package com.adscoop.userpublisher.handlers.campagin;
 import static ratpack.jackson.Jackson.fromJson;
 import static ratpack.jackson.Jackson.json;
 
-import com.adscoop.userpublisher.entites.Banner;
 import com.adscoop.userpublisher.entites.Campagin;
 import com.adscoop.userpublisher.services.UserSevice;
 import com.google.inject.Inject;

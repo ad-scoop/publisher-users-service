@@ -3,9 +3,8 @@ package com.adscoop.userpublisher.services;
 
 
 import com.adscoop.userpublisher.entites.Campagin;
-import ratpack.exec.Promise;
 
-import java.util.Optional;
+import ratpack.exec.Promise;
 
 
 /**
