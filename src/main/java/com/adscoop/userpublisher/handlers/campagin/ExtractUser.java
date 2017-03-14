@@ -22,12 +22,15 @@ public class ExtractUser {
 	public void handle(Context ctx, CampaginConsumer consumeCampagin) throws Exception {
 		String token = ctx.getRequest().getHeaders().get("token");
 		if (!token.isEmpty()) {
-			Optional<UserNode> optional = userSevice.findUserByToken(token);
-			if (optional.isPresent()) {
-				consumeCampagin.accept(optional.get());
-			} else {
-				ctx.render(json("no user present"));
-			}
+			 userSevice.findUserByToken(token).then(userNode -> {
+				 if (userNode !=null) {
+					 consumeCampagin.accept(userNode);
+				 } else {
+					 ctx.render(json("no user present"));
+				 }
+
+			 });
+
 		} else {
 			ctx.render(json("no token present"));
 		}

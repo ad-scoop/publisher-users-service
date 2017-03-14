@@ -4,6 +4,7 @@ package com.adscoop.userpublisher.services;
 import java.util.Optional;
 
 import com.adscoop.userpublisher.entites.UserNode;
+import ratpack.exec.Promise;
 
 
 /**
@@ -11,7 +12,7 @@ import com.adscoop.userpublisher.entites.UserNode;
  */
 public interface UserSevice {
 
-    Optional<UserNode> findUserByToken(String token) throws Exception;
+    Promise<UserNode> findUserByToken(String token) throws Exception;
 
     void saveOrUpate(UserNode userNode);
 }

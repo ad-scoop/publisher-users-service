@@ -7,6 +7,7 @@ import org.neo4j.ogm.session.Session;
 
 import com.adscoop.userpublisher.entites.UserNode;
 import com.google.inject.Inject;
+import ratpack.exec.Promise;
 
 /**
  * Created by kleistit on 13/02/2017.
@@ -22,8 +23,8 @@ public class UserServiceImpl implements UserSevice
 	}
 
 	@Override
-	public Optional<UserNode> findUserByToken(String token) {
-		return Optional.of(session.queryForObject(UserNode.class, "match (u) where u.token='" + token + "' return u",
+	public Promise<UserNode> findUserByToken(String token) {
+		return Promise.value(session.queryForObject(UserNode.class, "match (u) where u.token='" + token + "' return u",
 				Collections.emptyMap()));
 	}
 
