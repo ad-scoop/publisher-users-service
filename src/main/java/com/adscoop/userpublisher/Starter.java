@@ -9,6 +9,7 @@ import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.modules.Config;
 import com.adscoop.userpublisher.modules.ServiceCommonConfigModule;
 
+import ratpack.dropwizard.metrics.DropwizardMetricsModule;
 import ratpack.guice.Guice;
 import ratpack.rx.RxRatpack;
 import ratpack.server.BaseDir;
@@ -32,7 +33,13 @@ public class Starter {
         				.sysProps()
         				.build())
                 .registry(Guice.registry(bindingsSpec -> bindingsSpec
-                		.module(ConfigModule.class)
+                		.module(ConfigModule.class).module(DropwizardMetricsModule.class, d -> {
+							d.getConsole();
+							d.getGraphite();
+							d.getJmx();
+							d.getSlf4j();
+
+							})
                 		.module(ServiceCommonConfigModule.class).bind(PublisherUserException.class).bind(ServerErrorHandler.class))).
                         handlers(chain -> chain
                         		.all(CORSHandler.class)
