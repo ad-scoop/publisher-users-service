@@ -9,11 +9,16 @@ import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.modules.Config;
 import com.adscoop.userpublisher.modules.ServiceCommonConfigModule;
 
+import ratpack.dropwizard.metrics.DropwizardMetricsConfig;
 import ratpack.dropwizard.metrics.DropwizardMetricsModule;
+import ratpack.dropwizard.metrics.MetricsWebsocketBroadcastHandler;
 import ratpack.guice.Guice;
+import ratpack.health.HealthCheckHandler;
 import ratpack.rx.RxRatpack;
 import ratpack.server.BaseDir;
 import ratpack.server.RatpackServer;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by thokle on 25/01/2017.
@@ -28,23 +33,22 @@ public class Starter {
         		.serverConfig(sfb -> sfb.baseDir(BaseDir.find())
         				.props("ratpack.properties")
         				.yaml("database.yaml")
-        				.require("/db", Config.class)
+        				.require("/db", Config.class).require("/metrics", DropwizardMetricsConfig.class)
         				.env().development(false)
         				.sysProps()
         				.build())
                 .registry(Guice.registry(bindingsSpec -> bindingsSpec
                 		.module(ConfigModule.class).module(DropwizardMetricsModule.class, d -> {
-							d.getConsole();
-							d.getGraphite();
-							d.getJmx();
-							d.getSlf4j();
+							d.getGraphite().get().prefix("publisher-service").durationUnit(TimeUnit.SECONDS);
+
 
 							})
                 		.module(ServiceCommonConfigModule.class).bind(PublisherUserException.class).bind(ServerErrorHandler.class))).
                         handlers(chain -> chain
                         		.all(CORSHandler.class)
                         		.prefix("banners", BannerNodeChain.class)
-                        		.prefix("campagin", CampaginChain.class)));
+                        		.prefix("campagin", CampaginChain.class).prefix("admin",
+										admin -> admin.get("health-check/:name", new HealthCheckHandler()).get("metric-report", new MetricsWebsocketBroadcastHandler()))));
     }
     
 }
