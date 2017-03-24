@@ -27,7 +27,7 @@ public class CreateCampaginHandler implements Handler {
 	@Override
 	public void handle(Context ctx) throws Exception {
 		this.extractUser.handle(ctx, user -> { 
-			ctx.parse(fromJson(Campagin.class)).then(campagin -> {
+
 				ctx.parse(fromJson(Campagin.class)).then(campagin -> {
 					user.addCampagin(campagin);
 					userSevice.saveOrUpate(user);
