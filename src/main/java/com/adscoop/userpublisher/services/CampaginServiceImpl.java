@@ -26,9 +26,7 @@ public class CampaginServiceImpl implements CampaginService {
 
 	@Override
 	public Promise<Iterable<Campagin>> findCampaingsByUser(String token) {
-
-		return  Promise.value(session.query(Campagin.class,"match (u:UserNode {token:{token}})-[:CAMPAGIN_HAS_USER]-(c:Campagin)-[:CAMPAGIN_HAS_BANNERS]->(b:Banner) return c,b,u", Collections.singletonMap("token",token)));
-
+		return Promise.value(session.loadAll(UserNode.class, new Filter("token", token), -1).iterator().next().getCampagins());
 	}
 
 	public Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) {
