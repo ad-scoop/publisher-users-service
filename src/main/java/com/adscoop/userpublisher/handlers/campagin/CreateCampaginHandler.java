@@ -33,8 +33,9 @@ public class CreateCampaginHandler implements Handler {
 					userSevice.saveOrUpate(user);
 					ctx.render(json("created ok"));
 				});
-			});
+
 		}); 
 	}
 
 }
+
