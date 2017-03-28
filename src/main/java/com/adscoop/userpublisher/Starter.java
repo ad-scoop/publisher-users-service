@@ -56,10 +56,14 @@ public class Starter {
                         })
                         .module(ServiceCommonConfigModule.class).bind(PublisherUserException.class).bind(ServerErrorHandler.class))).
                         handlers(chain -> chain
-                                .all(CORSHandler.class)
-                                .prefix("banners", BannerNodeChain.class)
-                                .prefix("campagin", CampaginChain.class).prefix("admin",
-                                        admin -> admin.get("health-check/:name", new HealthCheckHandler()).get("metric-report", new MetricsWebsocketBroadcastHandler()))));
+                        		.prefix("publisher", userchain ->
+                        			userchain.all(CORSHandler.class)
+                        			.prefix("banners", BannerNodeChain.class)
+                        			.prefix("campagin", CampaginChain.class)
+                        			.prefix("admin",
+                                        admin -> admin
+                                        	.get("health-check/:name", new HealthCheckHandler())
+                                        	.get("metric-report", new MetricsWebsocketBroadcastHandler())))));
     }
 
 }
