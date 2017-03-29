@@ -6,6 +6,8 @@ import com.adscoop.userpublisher.entites.Campagin;
 
 import ratpack.exec.Promise;
 
+import java.util.Map;
+
 
 /**
  * Created by thokle on 23/01/2017.
@@ -14,7 +16,7 @@ public interface CampaginService {
 
 
 
-   Promise<Iterable<Campagin>> findCampaingsByUser(String  token) throws Exception;
+   Promise<Iterable<Map<String, Object>>> findCampaingsByUser(String  token) throws Exception;
 
     Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
     void updateCampagin(Campagin campagin) throws Exception;
