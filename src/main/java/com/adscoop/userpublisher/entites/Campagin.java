@@ -3,6 +3,8 @@ package com.adscoop.userpublisher.entites;
 import java.util.ArrayList;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
@@ -18,83 +20,47 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Campagin extends AbstratEntity {
 
+
+	@Getter
+	@Setter
 	private String name;
+	@Getter
+	@Setter
 	private long startDate;
+	@Getter
+	@Setter
 	private long endDate;
+	@Getter
+	@Setter
 	private double maxPricePrDay;
 
+
+	@Getter
+	@Setter
 	@Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_USER")
 	@JsonBackReference
 	private UserNode userNode;
 
+	@Getter
+	@Setter
 	@Relationship(type = "CAMPAGIN_HAS_BANNERS")
-	@JsonManagedReference
+
 	private List<Banner> banners = new ArrayList<>();
 
 	@Relationship(type = "RESERVED_WEBSITES")
 	@JsonManagedReference
 	private List<WebSite> webSites = new ArrayList<>();
 
-	public void setName(String name) {
-		this.name = name;
-	}
 
-	public UserNode getUserNode() {
-		return userNode;
-	}
-
-	public void setUserNode(UserNode userNode) {
-		this.userNode = userNode;
-	}
-
-	public List<Banner> getBanners() {
-		return banners;
-	}
-
-	public void setBanners(List<Banner> banners) {
-		this.banners = banners;
-	}
 
 	public void addBanner(Banner bannerNode) {
 		banners.add(bannerNode);
-		bannerNode.setCampagin(this);
+		bannerNode.getCampagin().add(this);
 	}
 
 	public void addReservedWebSite(WebSite webSite) {
 		webSites.add(webSite);
 		webSite.setCampagin(this);
-	}
-
-	public double getMaxPricePrDay() {
-		return maxPricePrDay;
-	}
-
-	public void setMaxPricePrDay(double maxPricePrDay) {
-		this.maxPricePrDay = maxPricePrDay;
-	}
-
-	public long getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDay(long startDate) {
-		this.startDate = startDate;
-	}
-
-	public long getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(long endDate) {
-		this.endDate = endDate;
-	}
-
-	public List<WebSite> getWebSites() {
-		return webSites;
-	}
-
-	public void setWebSites(List<WebSite> webSites) {
-		this.webSites = webSites;
 	}
 
 	public String getName() {

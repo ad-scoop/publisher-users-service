@@ -56,6 +56,7 @@ public class StartApp {
                         })
                         .module(ServiceCommonConfigModule.class).bind(PublisherUserException.class).bind(ServerErrorHandler.class))).
                         handlers(chain -> chain
+                        		.all(CORSHandler.class)
                         		.prefix("publisher", userchain ->
                         			userchain.all(CORSHandler.class)
                         			.prefix("banners", BannerNodeChain.class)

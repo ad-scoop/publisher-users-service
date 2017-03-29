@@ -48,7 +48,8 @@ dependencies {
     compile group: 'org.neo4j', name: 'neo4j-ogm-core', version: '2.1.0'
     compile group: 'org.neo4j', name: 'neo4j-ogm-bolt-driver', version: '2.1.0'
     compile group: 'org.neo4j', name: 'neo4j-ogm-api', version: '2.1.0'
-
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.16.16'
+    compile group: 'com.fasterxml.jackson.jaxrs', name: 'jackson-jaxrs-json-provider', version: '2.8.7'
     compile group: 'com.xeiam', name: 'sundial', version: '2.0.1'
     compile group: 'commons-validator', name: 'commons-validator', version: '1.5.1'
     compile group: 'io.ratpack', name: 'ratpack-dropwizard-metrics', version: '1.4.4'
