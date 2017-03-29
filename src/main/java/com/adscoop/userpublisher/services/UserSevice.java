@@ -1,9 +1,8 @@
 package com.adscoop.userpublisher.services;
 
 
-import java.util.Optional;
-
 import com.adscoop.userpublisher.entites.UserNode;
+
 import ratpack.exec.Promise;
 
 

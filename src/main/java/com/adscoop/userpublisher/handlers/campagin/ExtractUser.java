@@ -2,9 +2,6 @@ package com.adscoop.userpublisher.handlers.campagin;
 
 import static ratpack.jackson.Jackson.json;
 
-import java.util.Optional;
-
-import com.adscoop.userpublisher.entites.UserNode;
 import com.adscoop.userpublisher.services.UserSevice;
 import com.google.inject.Inject;
 

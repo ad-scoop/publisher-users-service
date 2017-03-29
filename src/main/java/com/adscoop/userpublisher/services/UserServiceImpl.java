@@ -1,12 +1,12 @@
 package com.adscoop.userpublisher.services;
 
 import java.util.Collections;
-import java.util.Optional;
 
 import org.neo4j.ogm.session.Session;
 
 import com.adscoop.userpublisher.entites.UserNode;
 import com.google.inject.Inject;
+
 import ratpack.exec.Promise;
 
 /**

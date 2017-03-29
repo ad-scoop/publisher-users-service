@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by thokle on 25/01/2017.
  */
-public class Starter {
+public class StartApp {
 
 
     public static void main(String... args) throws Exception {
