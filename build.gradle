@@ -35,7 +35,7 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven {
-        url "http://www.gundmann.dk/artifactory/ext-release-local"
+        url "https://www.gundmann.dk/artifactory/ext-release-local"
     }
 }
 
@@ -63,4 +63,4 @@ distZip {
     archiveName = baseName + ".zip"
 }
 
-mainClassName = "com.adscoop.userpublisher.StartApp"
+mainClassName = "com.adscoop.userpublisher.StartPublicherUsersService"
