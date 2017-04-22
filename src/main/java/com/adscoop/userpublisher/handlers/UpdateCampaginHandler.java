@@ -8,7 +8,6 @@ import com.adscoop.userpublisher.services.CampaginService;
 import com.google.inject.Inject;
 
 import ratpack.handling.Context;
-import ratpack.handling.Handler;
 
 public class UpdateCampaginHandler extends AbstractTokenHandler {
 

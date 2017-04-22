@@ -42,7 +42,7 @@ public class DeleteCampaginHandlerTest {
 		// when
 		HandlingResult result = RequestFixture.handle(handler,
 				fixture -> fixture
-					.header("token", "foo")
+					.header(Const.Headers.TOKEN, "foo")
 					.uri("campagins/remove?id=100"));
 
 		// then
@@ -55,7 +55,7 @@ public class DeleteCampaginHandlerTest {
 		// given when
 		HandlingResult result = RequestFixture.handle(handler,
 				fixture -> fixture
-				.header("token", "foo")
+				.header(Const.Headers.TOKEN, "foo")
 				.uri("campagins/delete"));
 
 		// then

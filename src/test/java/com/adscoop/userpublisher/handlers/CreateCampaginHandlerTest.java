@@ -41,7 +41,7 @@ public class CreateCampaginHandlerTest {
 		HandlingResult result = RequestFixture.handle(handler,
 				fixture -> fixture
 					.body(jsonCampagin, "application/json")
-					.header("token", "foo")
+					.header(Const.Headers.TOKEN, "foo")
 					.uri("campagins/create"));
 
 		// then

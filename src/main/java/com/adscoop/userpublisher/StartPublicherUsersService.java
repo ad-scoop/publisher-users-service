@@ -24,7 +24,7 @@ import ratpack.server.RatpackServer;
 import ratpack.server.ServerConfigBuilder;
 
 public class StartPublicherUsersService {
-
+	
     public static void main(String... args) throws Exception {
         RxRatpack.initialize();
 

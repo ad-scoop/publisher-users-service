@@ -12,7 +12,7 @@ public abstract class AbstractTokenHandler implements Handler {
 
 	@Override
 	public void handle(Context ctx) {
-		String token = ctx.getRequest().getHeaders().get("token");
+		String token = ctx.getRequest().getHeaders().get(Const.Headers.TOKEN);
 		if (StringUtils.isEmpty(token)) {
 			ctx.getResponse().status(Status.of(406));
 			ctx.render(json("no token"));

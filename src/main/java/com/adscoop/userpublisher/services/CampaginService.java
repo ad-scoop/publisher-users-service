@@ -4,6 +4,7 @@ import org.neo4j.ogm.cypher.Filter;
 import org.neo4j.ogm.session.Session;
 
 import com.adscoop.userpublisher.entites.Campagin;
+import com.adscoop.userpublisher.handlers.Const;
 import com.google.inject.Inject;
 
 import ratpack.exec.Promise;
@@ -18,7 +19,7 @@ public class CampaginService {
 	}
 
 	public Promise<Iterable<Campagin>> findCampaingsByToken(String token) {
-		return Promise.value(session.loadAll(Campagin.class, new Filter("token", token)));
+		return Promise.value(session.loadAll(Campagin.class, new Filter(Const.Headers.TOKEN, token)));
 	}
 
 	public void deleteCampagin(Long id) {

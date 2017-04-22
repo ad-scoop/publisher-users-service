@@ -9,6 +9,7 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
 import com.adscoop.userpublisher.entites.Campagin;
+import com.adscoop.userpublisher.handlers.Const;
 import com.adscoop.userpublisher.utils.RxRule;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -33,7 +34,7 @@ public class StartPublicherUsersServiceTest {
 										.type("application/json")
 										.text(buildCampagin()))
 								.getHeaders()
-									.add("token", "test")
+									.add(Const.Headers.TOKEN, "test")
 							)
 						.post("publisher/campagins/create")
 						.getStatus(),
@@ -48,7 +49,7 @@ public class StartPublicherUsersServiceTest {
 		// given when then
 		assertThat(
 				"Http requst status was no ok", service.getHttpClient()
-						.requestSpec(r -> r.getHeaders().add("token", "test")).get("publisher/campagins").getStatus(),
+						.requestSpec(r -> r.getHeaders().add(Const.Headers.TOKEN, "test")).get("publisher/campagins").getStatus(),
 				equalTo(Status.OK));
 		}
 	}
@@ -65,7 +66,7 @@ public class StartPublicherUsersServiceTest {
 										.type("application/json")
 										.text(buildCampagin()))
 								.getHeaders()
-									.add("token", "test")
+									.add(Const.Headers.TOKEN, "test")
 							)
 						.post("publisher/campagins/update")
 						.getStatus(),
@@ -82,7 +83,7 @@ public class StartPublicherUsersServiceTest {
 				"Http requst status was no ok", service.getHttpClient()
 						.requestSpec(request -> request
 								.getHeaders()
-									.add("token", "test")
+									.add(Const.Headers.TOKEN, "test")
 							)
 						.delete("publisher/campagins/remove?id=100")
 						.getStatus(),
