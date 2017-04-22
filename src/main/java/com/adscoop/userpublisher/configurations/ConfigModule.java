@@ -2,8 +2,6 @@
 package com.adscoop.userpublisher.configurations;
 
 import com.adscoop.userpublisher.chains.CampaginChain;
-import com.adscoop.userpublisher.exceptions.PublisherUserException;
-import com.adscoop.userpublisher.exceptions.ServerErrorHandler;
 import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.handlers.CreateCampaginHandler;
 import com.adscoop.userpublisher.handlers.DeleteCampaginHandler;
@@ -22,11 +20,9 @@ public class ConfigModule extends AbstractModule {
 		bind(CreateCampaginHandler.class).asEagerSingleton();
 		bind(DeleteCampaginHandler.class).asEagerSingleton();
 		bind(UpdateCampaginHandler.class).asEagerSingleton();
-		bind(PublisherUserException.class).asEagerSingleton();
 		bind(GetCampaginHandler.class).asEagerSingleton();
 		
 		bind(CORSHandler.class).asEagerSingleton();
-		bind(ServerErrorHandler.class).asEagerSingleton();
 	}
 
 }

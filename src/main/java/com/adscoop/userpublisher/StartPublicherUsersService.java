@@ -5,8 +5,6 @@ import java.util.concurrent.TimeUnit;
 
 import com.adscoop.userpublisher.chains.CampaginChain;
 import com.adscoop.userpublisher.configurations.ConfigModule;
-import com.adscoop.userpublisher.exceptions.PublisherUserException;
-import com.adscoop.userpublisher.exceptions.ServerErrorHandler;
 import com.adscoop.userpublisher.handlers.CORSHandler;
 import com.adscoop.userpublisher.modules.Config;
 import com.adscoop.userpublisher.modules.ServiceCommonConfigModule;
@@ -75,7 +73,7 @@ public class StartPublicherUsersService {
 		            d.console();
 		            d.jmx();
 		        })
-		        .module(ServiceCommonConfigModule.class).bind(PublisherUserException.class).bind(ServerErrorHandler.class));
+		        .module(ServiceCommonConfigModule.class));
 	}
 
 }

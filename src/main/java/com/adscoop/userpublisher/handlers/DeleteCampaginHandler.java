@@ -2,13 +2,15 @@ package com.adscoop.userpublisher.handlers;
 
 import static ratpack.jackson.Jackson.json;
 
+import org.apache.commons.lang3.StringUtils;
+
 import com.adscoop.userpublisher.services.CampaginService;
 import com.google.inject.Inject;
 
 import ratpack.handling.Context;
-import ratpack.handling.Handler;
+import ratpack.http.Status;
 
-public class DeleteCampaginHandler implements Handler {
+public class DeleteCampaginHandler extends AbstractTokenHandler {
 
 	private CampaginService campaginService;
 
@@ -18,9 +20,15 @@ public class DeleteCampaginHandler implements Handler {
 	}
 
 	@Override
-	public void handle(Context ctx) throws Exception {
-		campaginService.deleteCampagin(Long.parseLong(ctx.getRequest().getQueryParams().get("id")));
-		ctx.render(json("delete ok"));
+	protected void handleWithToken(Context ctx, String token) {
+		String id = ctx.getRequest().getQueryParams().get("id");
+		if (StringUtils.isEmpty(id)) {
+			ctx.getResponse().status(Status.of(412));
+			ctx.render(json("missing id"));
+		} else {
+			campaginService.deleteCampagin(Long.parseLong(id));
+			ctx.render(json("delete ok"));
+		}
 	}
 
 }

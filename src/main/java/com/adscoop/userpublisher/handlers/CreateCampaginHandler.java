@@ -8,9 +8,8 @@ import com.adscoop.userpublisher.services.CampaginService;
 import com.google.inject.Inject;
 
 import ratpack.handling.Context;
-import ratpack.handling.Handler;
 
-public class CreateCampaginHandler implements Handler {
+public class CreateCampaginHandler extends AbstractTokenHandler {
 
 	private CampaginService campaginService;
 
@@ -20,9 +19,9 @@ public class CreateCampaginHandler implements Handler {
 	}
 
 	@Override
-	public void handle(Context ctx) throws Exception {
+	protected void handleWithToken(Context ctx, String token) {
 		ctx.parse(fromJson(Campagin.class)).then(campagin -> {
-			campagin.setToken(ctx.getRequest().getHeaders().get("token"));
+			campagin.setToken(token);
 			campaginService.updateCampagin(campagin);
 			ctx.render(json("created ok"));
 		});

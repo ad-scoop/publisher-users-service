@@ -1,16 +1,14 @@
 package com.adscoop.userpublisher.handlers;
 
 import static ratpack.jackson.Jackson.json;
-import static ratpack.rx.RxRatpack.*;
+import static ratpack.rx.RxRatpack.observeEach;
 
 import com.adscoop.userpublisher.services.CampaginService;
 import com.google.inject.Inject;
 
 import ratpack.handling.Context;
-import ratpack.handling.Handler;
-import ratpack.http.Status;
 
-public class GetCampaginHandler implements Handler {
+public class GetCampaginHandler extends AbstractTokenHandler {
 
 	private CampaginService campaginService;
 
@@ -20,16 +18,10 @@ public class GetCampaginHandler implements Handler {
 	}
 
 	@Override
-	public void handle(Context ctx) throws Exception {
-		String token = ctx.getRequest().getHeaders().get("token");
-		if (token != null && !token.isEmpty()) {
-			observeEach(campaginService.findCampaingsByToken(token))
+	protected void handleWithToken(Context ctx, String token) {
+		observeEach(campaginService
+				.findCampaingsByToken(token))
 				.toList()
 				.forEach(campagins -> ctx.render(json(campagins)));
-		} else {
-			ctx.getResponse().status(Status.of(406));
-			ctx.render(json("no token"));
-		}
-
 	}
 }

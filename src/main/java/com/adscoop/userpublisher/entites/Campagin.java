@@ -8,15 +8,19 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 
 @NodeEntity
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
 @Builder
 @EqualsAndHashCode(callSuper=true)
+@NoArgsConstructor
+@AllArgsConstructor
 public class Campagin extends AbstratEntity {
 
 	private String name;

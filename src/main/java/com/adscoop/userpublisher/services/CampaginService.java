@@ -22,7 +22,10 @@ public class CampaginService {
 	}
 
 	public void deleteCampagin(Long id) {
-		session.delete(session.load(Campagin.class, id));
+		Campagin campagin = session.load(Campagin.class, id);
+		if (campagin != null) {
+			session.delete(campagin);
+		}
 		session.clear();
 	}
 

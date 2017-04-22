@@ -10,7 +10,7 @@ import com.google.inject.Inject;
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
 
-public class UpdateCampaginHandler implements Handler {
+public class UpdateCampaginHandler extends AbstractTokenHandler {
 
 	private CampaginService campaginService;
 
@@ -20,11 +20,12 @@ public class UpdateCampaginHandler implements Handler {
 	}
 
 	@Override
-	public void handle(Context ctx) throws Exception {
-		ctx.parse(fromJson(Campagin.class)).then(campagin -> {
-			campaginService.updateCampagin(campagin);
-			ctx.render(json("update ok"));
-		});
+	protected void handleWithToken(Context ctx, String token) {
+		ctx.parse(fromJson(Campagin.class))
+			.then(campagin -> {
+				campaginService.updateCampagin(campagin);
+				ctx.render(json("update ok"));
+			});
 	}
 
 }
