@@ -58,7 +58,7 @@ public class StartPublicherUsersService {
 	private static Function<Registry, Registry> setUpRegistry() {
 		return Guice.registry(bindingsSpec -> bindingsSpec
 		        .module(ConfigModule.class).module(DropwizardMetricsModule.class, d -> {
-		            d.getGraphite(   ).get().prefix("publisher-service").durationUnit(TimeUnit.SECONDS);
+		            d.getGraphite().get().prefix("publisher-service").durationUnit(TimeUnit.SECONDS);
 		            d.jmx(jmxConfig -> {
 		                jmxConfig.enable(true);
 		            });

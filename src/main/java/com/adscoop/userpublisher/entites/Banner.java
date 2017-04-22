@@ -5,17 +5,20 @@ import java.util.List;
 
 import org.neo4j.ogm.annotation.Labels;
 import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @NodeEntity
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Getter @Setter
+@Getter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Banner extends AbstratEntity {
 
 	private Integer width;
@@ -24,12 +27,10 @@ public class Banner extends AbstratEntity {
 	private String picture;
 
 	@Labels
+	@Builder.Default
 	private List<String> labels = new ArrayList<>();
 
+	@Builder.Default
 	private List<Long> bannerSpaceIds = new ArrayList<>();
-
-	@Relationship(direction = Relationship.INCOMING, type = "CAMPAGIN_HAS_BANNERS")
-	@JsonBackReference
-	private List<Campagin> campagin = new ArrayList<>();
 
 }

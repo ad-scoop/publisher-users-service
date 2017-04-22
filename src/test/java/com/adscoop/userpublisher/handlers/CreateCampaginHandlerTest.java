@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.verify;
 
+import java.util.Date;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +37,8 @@ public class CreateCampaginHandlerTest {
 	@Test
 	public void verifyThatAcampaginIsCreated() throws Exception {
 		// given
-		String jsonCampagin = new ObjectMapper().writeValueAsString(Campagin.builder().build());
+		String jsonCampagin = new ObjectMapper().writeValueAsString(Campagin.builder()
+				.build());
 
 		// when
 		HandlingResult result = RequestFixture.handle(handler,
