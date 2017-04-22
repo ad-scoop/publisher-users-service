@@ -3,24 +3,17 @@ package com.adscoop.userpublisher;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-
-import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+
+import com.adscoop.userpublisher.utils.RxRule;
 
 import ratpack.http.Status;
 import ratpack.test.MainClassApplicationUnderTest;
-import rx.plugins.RxJavaPlugins;
 
 public class StartPublicherUsersServiceTest {
 
-	@Before
-	public void setUp() throws Exception {
-		Method method = RxJavaPlugins.class.getDeclaredMethod("reset");
-		method.setAccessible(true);
-		method.invoke(RxJavaPlugins.getInstance());
-	}
+	@Rule public RxRule rxRule = new RxRule();
 	
 	@Test
 	public void verifyThatTheServiceIsUReturningErrorWhenTokenIsNotSet() throws Exception {
