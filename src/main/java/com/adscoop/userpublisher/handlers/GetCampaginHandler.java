@@ -8,6 +8,7 @@ import com.google.inject.Inject;
 
 import ratpack.handling.Context;
 import ratpack.handling.Handler;
+import ratpack.http.Status;
 
 public class GetCampaginHandler implements Handler {
 
@@ -21,11 +22,12 @@ public class GetCampaginHandler implements Handler {
 	@Override
 	public void handle(Context ctx) throws Exception {
 		String token = ctx.getRequest().getHeaders().get("token");
-		if (!token.isEmpty()) {
+		if (token != null && !token.isEmpty()) {
 			observeEach(campaginService.findCampaingsByToken(token))
 				.toList()
 				.forEach(campagins -> ctx.render(json(campagins)));
 		} else {
+			ctx.getResponse().status(Status.of(406));
 			ctx.render(json("no token"));
 		}
 

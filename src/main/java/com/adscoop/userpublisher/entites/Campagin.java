@@ -8,12 +8,14 @@ import org.neo4j.ogm.annotation.Relationship;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @NodeEntity
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Data
+@Builder
 @EqualsAndHashCode(callSuper=true)
 public class Campagin extends AbstratEntity {
 
@@ -24,9 +26,11 @@ public class Campagin extends AbstratEntity {
 	private long clicks;
 	private String token;
 	
+	@Builder.Default
 	private List<Long> webSiteIds = new ArrayList<>();
 
 	@Relationship(type = "CAMPAGIN_HAS_BANNERS")
+	@Builder.Default
 	private List<Banner> banners = new ArrayList<>();
 
 }
