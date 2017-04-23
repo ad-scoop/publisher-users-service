@@ -15,7 +15,7 @@ public class CampaginChain implements Action<Chain> {
         chain
         	.post("create", CreateCampaginHandler.class)
         	.post("update", UpdateCampaginHandler.class)
-        	.delete("remove", DeleteCampaginHandler.class)
+        	.delete("remove/:id", DeleteCampaginHandler.class)
         	.get(GetCampaginHandler.class);
     }
     

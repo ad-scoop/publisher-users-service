@@ -41,13 +41,11 @@ public class UpdateCampaginHandlerTest {
 		HandlingResult result = RequestFixture.handle(handler,
 				fixture -> fixture
 					.body(jsonCampagin, "application/json")
-					.header(Const.Headers.TOKEN, "foo")
-					.uri("campagins/update"));
+					.header(Const.Headers.TOKEN, "foo"));
 
 		// then
-		assertEquals("Campagins was not updated", result.getStatus(), Status.OK);
+		assertEquals("Campagins was not updated", Status.OK, result.getStatus());
 		verify(session).save(any(Campagin.class));
 	}
-
 
 }

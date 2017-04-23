@@ -89,7 +89,7 @@ public class StartPublicherUsersServiceTest {
 								.getHeaders()
 									.add(Const.Headers.TOKEN, "test")
 							)
-						.delete("publisher/campagins/remove?id=100")
+						.delete("publisher/campagins/remove/100")
 						.getStatus(),
 				equalTo(Status.OK));
 		}

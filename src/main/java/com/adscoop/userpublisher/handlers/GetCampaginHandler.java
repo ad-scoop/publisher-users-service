@@ -20,7 +20,7 @@ public class GetCampaginHandler extends AbstractTokenHandler {
 	@Override
 	protected void handleWithToken(Context ctx, String token) {
 		observeEach(campaginService
-				.findCampaingsByToken(token))
+				.findByToken(token))
 				.toList()
 				.forEach(campagins -> ctx.render(json(campagins)));
 	}

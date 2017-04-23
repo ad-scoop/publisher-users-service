@@ -18,7 +18,7 @@ public class CampaginService {
 		this.session = session;
 	}
 
-	public Promise<Iterable<Campagin>> findCampaingsByToken(String token) {
+	public Promise<Iterable<Campagin>> findByToken(String token) {
 		return Promise.value(session.loadAll(Campagin.class, new Filter(Const.Headers.TOKEN, token)));
 	}
 

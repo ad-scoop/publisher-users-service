@@ -21,13 +21,13 @@ public class DeleteCampaginHandler extends AbstractTokenHandler {
 
 	@Override
 	protected void handleWithToken(Context ctx, String token) {
-		String id = ctx.getRequest().getQueryParams().get("id");
+		String id = ctx.getPathTokens().get("id");
 		if (StringUtils.isEmpty(id)) {
 			ctx.getResponse().status(Status.of(412));
 			ctx.render(json("missing id"));
 		} else {
 			campaginService.deleteCampagin(Long.parseLong(id));
-			ctx.render(json("delete ok"));
+			ctx.render(json("campagin deleted"));
 		}
 	}
 

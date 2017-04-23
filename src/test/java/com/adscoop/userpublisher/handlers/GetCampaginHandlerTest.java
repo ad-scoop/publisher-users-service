@@ -43,10 +43,10 @@ public class GetCampaginHandlerTest {
 
 		// when
 		HandlingResult result = RequestFixture.handle(handler,
-				fixture -> fixture.header(Const.Headers.TOKEN, "foo").uri("campagins"));
+				fixture -> fixture.header(Const.Headers.TOKEN, "foo"));
 
 		// then
-		assertEquals("Campagins was not returnd", Lists.newArrayList(campagin), result.rendered(DefaultJsonRender.class).getObject());
+		assertEquals("Campagins was not returnd", result.rendered(DefaultJsonRender.class).getObject(), Lists.newArrayList(campagin));
 	}
 	
 	@Test

@@ -44,11 +44,10 @@ public class CreateCampaginHandlerTest {
 		HandlingResult result = RequestFixture.handle(handler,
 				fixture -> fixture
 					.body(jsonCampagin, "application/json")
-					.header(Const.Headers.TOKEN, "foo")
-					.uri("campagins/create"));
+					.header(Const.Headers.TOKEN, "foo"));
 
 		// then
-		assertEquals("Campagins was not saved", result.getStatus(), Status.OK);
+		assertEquals("Campagins was not saved", Status.OK, result.getStatus());
 		verify(session).save(any(Campagin.class));
 	}
 	

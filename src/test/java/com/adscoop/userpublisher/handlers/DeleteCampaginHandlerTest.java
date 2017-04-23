@@ -7,6 +7,9 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
+import java.util.Collections;
+
+import org.apache.commons.collections4.MapUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +38,7 @@ public class DeleteCampaginHandlerTest {
 	}
 	
 	@Test
-	public void verifyThatAcampaginIsCreated() throws Exception {
+	public void verifyThatACampaginIsDeleted() throws Exception {
 		// given
 		doReturn(Campagin.builder().build()).when(session).load(eq(Campagin.class), anyLong());
 		
@@ -43,10 +46,10 @@ public class DeleteCampaginHandlerTest {
 		HandlingResult result = RequestFixture.handle(handler,
 				fixture -> fixture
 					.header(Const.Headers.TOKEN, "foo")
-					.uri("campagins/remove?id=100"));
+					.pathBinding(Collections.singletonMap("id", "100")));
 
 		// then
-		assertEquals("Campagins was not deleted", result.getStatus(), Status.OK);
+		assertEquals("Campagins was not deleted", Status.OK, result.getStatus());
 		verify(session).delete(any(Campagin.class));
 	}
 	
@@ -56,12 +59,10 @@ public class DeleteCampaginHandlerTest {
 		HandlingResult result = RequestFixture.handle(handler,
 				fixture -> fixture
 				.header(Const.Headers.TOKEN, "foo")
-				.uri("campagins/delete"));
+				.uri("campagins/remove"));
 
 		// then
 		assertEquals("should return error", result.getStatus(), Status.of(412));
 	}
-
-
 	
 }

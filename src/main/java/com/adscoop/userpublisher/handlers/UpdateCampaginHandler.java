@@ -20,11 +20,10 @@ public class UpdateCampaginHandler extends AbstractTokenHandler {
 
 	@Override
 	protected void handleWithToken(Context ctx, String token) {
-		ctx.parse(fromJson(Campagin.class))
-			.then(campagin -> {
-				campaginService.updateCampagin(campagin);
-				ctx.render(json("update ok"));
-			});
+		ctx.parse(fromJson(Campagin.class)).then(campagin -> {
+			campaginService.updateCampagin(campagin);
+			ctx.render(json("update ok"));
+		});
 	}
 
 }
