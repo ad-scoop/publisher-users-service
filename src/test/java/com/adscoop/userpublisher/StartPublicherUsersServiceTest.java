@@ -109,7 +109,6 @@ public class StartPublicherUsersServiceTest {
 				.banners(Lists.newArrayList(Banner.builder()
 						.clicks(200)
 						.height(400)
-						.labels(Lists.newArrayList("label"))
 						.picture("picutre")
 						.width(200)
 						.build()))

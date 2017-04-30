@@ -26,10 +26,6 @@ public class Banner extends AbstratEntity {
 	private Integer clicks;
 	private String picture;
 
-	@Labels
-	@Builder.Default
-	private List<String> labels = new ArrayList<>();
-
 	@Builder.Default
 	private List<Long> bannerSpaceIds = new ArrayList<>();
 
