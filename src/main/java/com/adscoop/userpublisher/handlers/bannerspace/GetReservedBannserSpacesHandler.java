@@ -29,25 +29,8 @@ public class GetReservedBannserSpacesHandler implements Handler {
         String token  = ctx.getRequest().getHeaders().get("token");
 
         if(!token.isEmpty()){
-
-
-           Optional<Iterable<BannerSpace>>  bannerSpaces = bannerSpaceService.getReservedBannerSpaces(token);
-
-           if(bannerSpaces.isPresent()){
-
-
-               bannerSpaces.get().iterator().forEachRemaining( bannerSpace ->  {
-
-                  addBannerSpaceToList(bannerSpace);
-
-               });
-
-               ctx.render(json(getBannerSpaces()));
-
-           }
-
-
-
+           bannerSpaceService.getReservedBannerSpaces(token).then( bannerSpaces1 ->
+                    bannerSpaces1.forEach( bannerSpace ->     addBannerSpaceToList(bannerSpace)));
         }
     }
 

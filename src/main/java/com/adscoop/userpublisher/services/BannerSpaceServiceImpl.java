@@ -7,6 +7,7 @@ import org.neo4j.ogm.session.Session;
 
 import com.adscoop.userpublisher.entites.BannerSpace;
 import com.google.inject.Inject;
+import ratpack.exec.Promise;
 
 /**
  * Created by thokle on 19/02/2017.
@@ -21,8 +22,8 @@ public class BannerSpaceServiceImpl implements BannerSpaceService {
 	}
 
 	@Override
-	public Optional<Iterable<BannerSpace>> getReservedBannerSpaces(String reservedtoken) {
-		return Optional.ofNullable(session.query(BannerSpace.class,
+	public Promise<Iterable<BannerSpace>> getReservedBannerSpaces(String reservedtoken) {
+		return Promise.value(session.query(BannerSpace.class,
 				"match (b) where  a.reservedids IN [" + reservedtoken + "] return b ", Collections.emptyMap()));
 	}
 }
