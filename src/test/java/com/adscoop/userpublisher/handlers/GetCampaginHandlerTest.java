@@ -1,8 +1,7 @@
 package com.adscoop.userpublisher.handlers;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.doReturn;
 
 import org.junit.Before;
@@ -22,6 +21,8 @@ import ratpack.jackson.internal.DefaultJsonRender;
 import ratpack.test.handling.HandlingResult;
 import ratpack.test.handling.RequestFixture;
 
+import java.util.Collections;
+
 @RunWith(MockitoJUnitRunner.class)
 public class GetCampaginHandlerTest {
 
@@ -38,8 +39,9 @@ public class GetCampaginHandlerTest {
 	@Test
 	public void verifyThatDataIsReturnd() throws Exception {
 		// given
+		String token = "123123-adasd";
 		Campagin campagin = Campagin.builder().build();
-		doReturn(Lists.newArrayList(campagin)).when(session).loadAll(eq(Campagin.class), any(Filter.class));
+		doReturn(Lists.newArrayList(campagin)).when(session).query(eq(Campagin.class), any(String.class), anyMap());
 
 		// when
 		HandlingResult result = RequestFixture.handle(handler,
