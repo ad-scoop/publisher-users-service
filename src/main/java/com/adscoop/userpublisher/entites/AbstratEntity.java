@@ -1,9 +1,10 @@
 package com.adscoop.userpublisher.entites;
 
-import org.neo4j.ogm.annotation.GraphId;
+
 
 import lombok.Getter;
 import lombok.Setter;
+import org.neo4j.ogm.annotation.GraphId;
 
 @Getter @Setter
 public abstract class AbstratEntity {
