@@ -1,29 +1,38 @@
 package com.adscoop.userpublisher.services;
 
-
+import org.neo4j.ogm.cypher.Filter;
+import org.neo4j.ogm.session.Session;
 
 import com.adscoop.userpublisher.entites.Campagin;
+import com.adscoop.userpublisher.handlers.Const;
+import com.google.inject.Inject;
 
 import ratpack.exec.Promise;
 
-import java.util.Map;
+public class CampaginService {
 
+	private Session session;
 
-/**
- * Created by thokle on 23/01/2017.
- */
-public interface CampaginService {
+	@Inject
+	public CampaginService(Session session) {
+		this.session = session;
+	}
 
+	public Promise<Iterable<Campagin>> findByToken(String token) {
+		return Promise.value(session.loadAll(Campagin.class, new Filter(Const.Headers.TOKEN, token)));
+	}
 
+	public void deleteCampagin(Long id) {
+		Campagin campagin = session.load(Campagin.class, id);
+		if (campagin != null) {
+			session.delete(campagin);
+		}
+		session.clear();
+	}
 
-   Promise<Iterable<Map<String, Object>>> findCampaingsByUser(String  token) throws Exception;
-
-    Promise<Campagin> findCampaginsByUserTokenAndName(String campaginname, String token) throws Exception;
-    void updateCampagin(Campagin campagin) throws Exception;
-
-    void deleteCampagin(Long id);
-
-
-
+	public void updateCampagin(Campagin campagin) {
+		session.save(campagin);
+		session.clear();
+	}
 
 }

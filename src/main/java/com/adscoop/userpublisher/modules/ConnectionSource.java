@@ -10,7 +10,7 @@ import com.google.inject.Inject;
 
 public class ConnectionSource {
 
-	SessionFactory sessionFactory;
+	private SessionFactory sessionFactory;
 
 	@Inject
 	public ConnectionSource(Config config) throws IOException {
@@ -25,9 +25,7 @@ public class ConnectionSource {
 	}
 
 	public Session session() {
-
 		return sessionFactory.openSession();
-
 	}
 
 }

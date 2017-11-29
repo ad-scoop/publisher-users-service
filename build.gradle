@@ -1,23 +1,16 @@
 group 'com.adscoop'
 version '1.0'
 
-
-
 apply plugin: "io.ratpack.ratpack-java"
-
 apply plugin: "idea"
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'eclipse'
 apply plugin: 'eclipse-wtp'
-
 apply plugin: 'com.bmuschko.docker-remote-api'
 apply plugin: 'com.bmuschko.docker-java-application'
 
-
-
 buildscript {
-
 
     repositories {
         jcenter()
@@ -25,15 +18,10 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-
-        classpath "io.ratpack:ratpack-gradle:1.4.3"
-      classpath 'com.bmuschko:gradle-docker-plugin:3.0.1'
-
+       classpath "io.ratpack:ratpack-gradle:1.4.3"
+       classpath 'com.bmuschko:gradle-docker-plugin:3.0.1'
     }
-
-
 }
-
 
 docker {
     javaApplication {
@@ -47,11 +35,14 @@ repositories {
     mavenCentral()
     mavenLocal()
     maven {
-        url "http://www.gundmann.dk:8081/artifactory/ext-release-local"
+        url "https://www.gundmann.dk/artifactory/ext-release-local"
     }
 }
 
 dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '2.0.2-beta'
+ 
     compile group: 'io.ratpack', name: 'ratpack-guice', version: '1.4.3'
     compile group: 'io.ratpack', name: 'ratpack-rx', version: '1.4.3'
 
@@ -65,6 +56,7 @@ dependencies {
     compile group: 'com.xeiam', name: 'sundial', version: '2.0.1'
     compile group: 'commons-validator', name: 'commons-validator', version: '1.5.1'
     compile group: 'io.ratpack', name: 'ratpack-dropwizard-metrics', version: '1.4.4'
+
     runtime 'org.apache.logging.log4j:log4j-slf4j-impl:2.0.2'
     runtime 'org.apache.logging.log4j:log4j-api:2.0.2'
     runtime 'org.apache.logging.log4j:log4j-core:2.0.2'
@@ -74,4 +66,4 @@ distZip {
     archiveName = baseName + ".zip"
 }
 
-mainClassName = "com.adscoop.userpublisher.Starter"
+mainClassName = "com.adscoop.userpublisher.StartPublicherUsersService"
