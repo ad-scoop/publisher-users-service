@@ -34,9 +34,7 @@ repositories {
     jcenter()
     mavenCentral()
     mavenLocal()
-    maven {
-        url "https://www.gundmann.dk/artifactory/ext-release-local"
-    }
+
 }
 
 dependencies {
