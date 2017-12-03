@@ -18,7 +18,7 @@ public class CampaginService {
 
     public Promise<Iterable<Campagin>> findByToken(String token) {
         return Promise.async(downstream -> {
-            Iterable<Campagin> campagins = session.query(Campagin.class, "match (c:Campagin)-[r:CAMPAGIN_HAS_BANNERS]->(b:Banner) where c.token={token} return c", Collections.singletonMap("token", token));
+            Iterable<Campagin> campagins = session.query(Campagin.class, "match (c:Campagin)-[r:CAMPAGIN_HAS_BANNERS]->(b:Banner) where c.token={token} return c,b", Collections.singletonMap("token", token));
 
             downstream.success(campagins);
         });
@@ -26,6 +26,7 @@ public class CampaginService {
     }
 
     public void deleteCampagin(Long id) {
+
         Campagin campagin = session.queryForObject(Campagin.class, "match (c:Campagin) where ID(c)={id} return c", Collections.singletonMap("id", id));
         session.delete(campagin);
         session.clear();
