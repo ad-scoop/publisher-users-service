@@ -1,11 +1,10 @@
 package com.adscoop.userpublisher.handlers;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
-import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.util.Collections;
 
@@ -39,8 +38,8 @@ public class DeleteCampaginHandlerTest {
 	@Test
 	public void verifyThatACampaginIsDeleted() throws Exception {
 		// given
-		doReturn(Campagin.builder().build()).when(session).load(eq(Campagin.class), anyLong());
-		
+		when(session.queryForObject(eq(Campagin.class), anyString(),anyMap())).thenReturn(Campagin.builder().build());
+
 		// when
 		HandlingResult result = RequestFixture.handle(handler,
 				fixture -> fixture
