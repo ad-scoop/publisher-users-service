@@ -26,6 +26,7 @@ public class CampaginService {
     }
 
     public void deleteCampagin(Long id) {
+
         Campagin campagin = session.queryForObject(Campagin.class, "match (c:Campagin) where ID(c)={id} return c", Collections.singletonMap("id", id));
         session.delete(campagin);
         session.clear();
