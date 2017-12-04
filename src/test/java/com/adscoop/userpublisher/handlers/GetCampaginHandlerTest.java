@@ -9,7 +9,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.neo4j.ogm.cypher.ComparisonOperator;
 import org.neo4j.ogm.cypher.Filter;
+import org.neo4j.ogm.cypher.Filters;
 import org.neo4j.ogm.session.Session;
 
 import com.adscoop.userpublisher.entites.Campagin;
@@ -41,7 +43,7 @@ public class GetCampaginHandlerTest {
 		// given
 		String token = "123123-adasd";
 		Campagin campagin = Campagin.builder().build();
-		doReturn(Lists.newArrayList(campagin)).when(session).query(eq(Campagin.class), any(String.class), anyMap());
+		doReturn(Lists.newArrayList(campagin)).when(session).loadAll(eq(Campagin.class),any(Filter.class), anyInt());
 
 		// when
 		HandlingResult result = RequestFixture.handle(handler,
