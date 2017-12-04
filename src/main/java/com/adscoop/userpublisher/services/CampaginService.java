@@ -2,6 +2,8 @@ package com.adscoop.userpublisher.services;
 
 import com.adscoop.userpublisher.entites.Campagin;
 import com.google.inject.Inject;
+import org.neo4j.ogm.cypher.ComparisonOperator;
+import org.neo4j.ogm.cypher.Filter;
 import org.neo4j.ogm.session.Session;
 import ratpack.exec.Promise;
 
@@ -18,7 +20,7 @@ public class CampaginService {
 
     public Promise<Iterable<Campagin>> findByToken(String token) {
         return Promise.async(downstream -> {
-            Iterable<Campagin> campagins = session.query(Campagin.class, "match (c:Campagin)-[r:CAMPAGIN_HAS_BANNERS]->(b:Banner) where c.token={token} return c,b", Collections.singletonMap("token", token));
+            Iterable<Campagin> campagins   = session.loadAll(Campagin.class, new Filter("token", ComparisonOperator.EQUALS, token), 3);
 
             downstream.success(campagins);
         });
